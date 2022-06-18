@@ -10,6 +10,7 @@ export interface IMoralis {
 }
 
 
+
 export const useInitMoralis = () => {
     const moralis:IMoralis = useMoralis();
     return moralis;
@@ -17,6 +18,7 @@ export const useInitMoralis = () => {
 
 
 
+/** Connects to Web3 Wallet */
 export const connectWeb3Wallet = async(Moralis:any) => {
     try {
         const result = await Moralis.authenticate({signingMessage: "Log into Atomic app"});
@@ -31,6 +33,9 @@ export const connectWeb3Wallet = async(Moralis:any) => {
 }
 
 
+
+
+/** Disconnect to Web3 Wallet */
 export const disconnectWeb3Wallet = async(Moralis:any) => {
     try {
         await Moralis.logout();
