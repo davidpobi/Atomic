@@ -1,30 +1,15 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter,Routes, Route } from "react-router-dom";
-import App from './App';
-import './styles.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { MoralisProvider } from "react-moralis";
 import Collectibles from './Pages/Collectibles';
 import Home from './Pages/Home';
 import Layout from './Pages/Layout';
 import NoMatch from './Pages/NoMatch';
-import allReducers from './reducers';
-import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import store from './redux/store';
 
-const window:any = Window;
-// //  STORE
-let store = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
-
-
-// // DISPLAY
-store.subscribe(() => {
- console.log(store.getState());
-});
+import './styles.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
