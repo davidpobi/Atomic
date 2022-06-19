@@ -1,4 +1,4 @@
-import allReducers from '../redux/reducers';
+import allReducers from './reducers';
 import {applyMiddleware, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
@@ -10,11 +10,6 @@ let store = createStore(
     )
     );
   
-  
-  /** Subscribe to display store */
-  store.subscribe(() => {
-   console.log(store.getState());
-  });
   
 
 export default store;

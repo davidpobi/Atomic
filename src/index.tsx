@@ -6,16 +6,25 @@ import Home from './Pages/Home';
 import Layout from './Pages/Layout';
 import NoMatch from './Pages/NoMatch';
 import {Provider} from 'react-redux';
-import store from './redux/store';
-
+import store from './Redux/store';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ProtectedRouteProps } from './Models/interfaces';
+import { AuthGuard } from './Services/AuthGuard';
 
+
+const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
+  authenticationPath: "/",
+};
+
+ 
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+
 
 
 root.render(
@@ -26,7 +35,10 @@ root.render(
     <Routes>
       <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="assets" element={<Collectibles />} />
+      <Route path="assets" element={ <AuthGuard
+              {...defaultProtectedRouteProps}
+              outlet={<Collectibles />}
+            />} />
       </Route>
       <Route path="*" element={<NoMatch />} />
     </Routes>

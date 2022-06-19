@@ -1,25 +1,24 @@
 import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
-import { isLoggedIn, isLoggedOut } from '../../redux/actions';
-import {useInitMoralis,connectWeb3Wallet,disconnectWeb3Wallet, IMoralis} from '../../Services/AuthService';
+import { useDispatch } from 'react-redux';
+import { isLoggedIn, isLoggedOut } from '../../Redux/actions';
+import {useInitMoralis,connectWeb3Wallet,disconnectWeb3Wallet} from '../../Services/AuthService';
 import { useNavigate } from "react-router-dom";
+import { IMoralis } from '../../Models/interfaces';
 
 const Login: React.FC = () => {
   const Moralis:IMoralis = useInitMoralis();
   const dispatch = useDispatch();
   let navigate = useNavigate();
 
+
+
   useEffect(() => {
       if(Moralis.isAuthenticated) {
-        console.log('signed in');
-        
         dispatch(isLoggedIn());
       //  navigate('/assets');
       }else{
-        console.log('signed out');
-
-         dispatch(isLoggedOut());
-         navigate('/');
+        dispatch(isLoggedOut());
+        navigate('/');
       } 
 
   },[Moralis.isAuthenticated]);

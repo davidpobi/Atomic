@@ -1,13 +1,5 @@
 import { useMoralis } from "react-moralis";
-
-export interface IMoralis {
-    authenticate: any;
-    isAuthenticated:any;
-    isAuthenticating:any; 
-    user:any;
-    account:any; 
-    logout:any;
-}
+import { IMoralis } from "../Models/interfaces";
 
 
 

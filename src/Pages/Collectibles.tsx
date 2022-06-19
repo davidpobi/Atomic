@@ -2,7 +2,7 @@ import React,{ useEffect, useState }  from 'react';
 import { useMoralis,useMoralisWeb3Api } from "react-moralis";
 import { getUserOwnedAssets } from '../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
-import { getAssets } from '../redux/actions';
+import { getAssets } from '../Redux/actions';
 
 
 const Collectibles: React.FC = () => {
