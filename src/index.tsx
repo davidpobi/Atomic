@@ -6,7 +6,7 @@ import Home from './Pages/Home';
 import Layout from './Pages/Layout';
 import NoMatch from './Pages/NoMatch';
 import {Provider} from 'react-redux';
-import store from './Redux/store';
+import store from './Store/store';
 import './styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProtectedRouteProps } from './Models/interfaces';

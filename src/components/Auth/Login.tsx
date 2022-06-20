@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { isLoggedIn, isLoggedOut } from '../../Redux/actions';
+import { isLoggedIn, isLoggedOut } from '../../Store/actions';
 import {useInitMoralis,connectWeb3Wallet,disconnectWeb3Wallet} from '../../Services/AuthService';
 import { useNavigate } from "react-router-dom";
 import { IMoralis } from '../../Models/interfaces';

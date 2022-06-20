@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { ProtectedRouteProps } from "../Models/interfaces";
-import store from "../Redux/store";
+import store from "../Store/store";
 
 
 export  const AuthGuard: any = ({authenticationPath, outlet}: ProtectedRouteProps) =>  {
