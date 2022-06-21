@@ -12,7 +12,7 @@ const Collections: React.FC = () => {
   const { isAuthenticated, user } = useMoralis();
   const Web3Api = useMoralisWeb3Api();
 
-  const [userAddress, setUserAddress] = useState("");
+ // const [userAddress, setUserAddress] = useState("");
   const [startToken, setStartToken] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const collection: Array<any>  =  useSelector((state:any) => state.collections);
@@ -22,18 +22,19 @@ const Collections: React.FC = () => {
  
   useEffect(() => {
       if(!isAuthenticated) {return;}
-        setUserAddress(user?.get("ethAddress"));
+      //  setUserAddress(user?.get("ethAddress"));
 
-        if(contractId && validateEthereumAddress(contractId)) {
-          getUserAssetsByContract(contractId,startToken); 
-        }
+      
    
   }, []);
 
 
 
   useEffect(() => {
-  },[collection]);
+    if(contractId && validateEthereumAddress(contractId)) {
+        getUserAssetsByContract(contractId,startToken); 
+      }
+  },[contractId]);
 
 
 
