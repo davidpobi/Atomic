@@ -1,8 +1,8 @@
 const userAssets = (state:any, action:any) => {
     switch(action.type) {
-         case 'GET':
+         case 'GET_ASSETS':
               return action.payload;
-         case 'CLEAR':
+         case 'CLEAR_ASSETS':
                 return [];
          default:
               return [];

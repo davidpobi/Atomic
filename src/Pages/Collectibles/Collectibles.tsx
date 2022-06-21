@@ -1,59 +1,46 @@
 import React,{ useEffect, useState }  from 'react';
 import "./Collectibles.scss";
-import { useMoralis,useMoralisWeb3Api } from "react-moralis";
-import { getNFtsByContract_Alchemy, getUserOwnedAssets } from '../../Services/AssetsService';
+import { useMoralis } from "react-moralis";
+import { getUserOwnedAssets_Alchemy } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
 import { getAssets } from '../../Store/actions';
-import { useParams } from 'react-router-dom';
+
 
 const Collectibles: React.FC = () => {
   /** Controller */
  
   const { isAuthenticated, user } = useMoralis();
-  const Web3Api = useMoralisWeb3Api();
-
   const [userAddress, setUserAddress] = useState("");
   const [startToken, setStartToken] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const collectibles: Array<any>  =  useSelector((state:any) => state.collectibles);
   const dispatch = useDispatch();
-  const { contractId } = useParams();
+
 
  
   useEffect(() => {
       if(!isAuthenticated) {return;}
         setUserAddress(user?.get("ethAddress"));
-
-        if(contractId && validateEthereumAddress(contractId)) {
-          getUserAssetsByContract(contractId,startToken); 
-        }
-   
   }, []);
 
 
 
   useEffect(() => {
-    console.log(collectibles);
-  },[collectibles]);
+    console.log(userAddress);
+    if(userAddress) {
+      getUserAssets();
+    }
+  },[userAddress]);
+
 
 
   const getUserAssets = async () => {
-   const assets = await getUserOwnedAssets(Web3Api, "eth",userAddress);
-   console.log(assets);
-   dispatch(getAssets(assets));
-   return assets;
-  }
-
-
-
-
-  const getUserAssetsByContract = async (contractAddress: string, startToken: string) => {
-    if(!hasNextPage) {
+    if(!hasNextPage) { 
       console.log('done fetching');
       return;
     }
 
-    const result = await getNFtsByContract_Alchemy("eth",contractAddress,startToken);
+    const result = await getUserOwnedAssets_Alchemy("eth",userAddress, startToken);
     console.log(result.assets);
     if(result.assets.length > 0) {
       dispatch(getAssets(result.assets));
@@ -90,8 +77,8 @@ const Collectibles: React.FC = () => {
  
     <> 
         <div className='page-header'>
-          <h1 className='heading'>Collectibles</h1>
-          <button  onClick={() => getUserAssetsByContract(contractId || '',startToken)}  className="btn btn-md btn-primary getCollectibles">Get Collection</button> 
+          <h1 className='heading'>NFTs</h1>
+          <button  onClick={() => getUserAssets()}  className="btn btn-md btn-primary getCollectibles">Fetch NFTs</button> 
         </div>
  
           <div className='assets-list'>
@@ -99,7 +86,7 @@ const Collectibles: React.FC = () => {
            
               {
                 collectibles.map((asset) => {
-                  console.log(asset);
+
                     return  (
                     <li className="list-inline-item center" key={asset.id.tokenId}>
                       <div className="asset-card">
@@ -121,4 +108,4 @@ const Collectibles: React.FC = () => {
   )
 }
 
-export default Collectibles
+export default Collectibles;

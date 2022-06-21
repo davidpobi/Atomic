@@ -11,6 +11,7 @@ import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProtectedRouteProps } from './Models/interfaces';
 import { AuthGuard } from './Services/AuthGuard';
+import Collections from './Pages/Collections/Collections';
 
 
 const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
@@ -35,10 +36,10 @@ root.render(
     <Routes>
       <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="collection"  element={<Collectibles />} />
-      <Route path="collection/:contractId"  element={<Collectibles />}/>
-      {/* <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
-      <Route path="assets/:id" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} /> */}
+      <Route path="collection"  element={<Collections />} />
+      <Route path="collection/:contractId"  element={<Collections />}/>
+      <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
+      {/* <Route path="assets/:id" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} /> */}
       </Route>
 
       

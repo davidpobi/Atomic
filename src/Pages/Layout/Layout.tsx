@@ -17,7 +17,11 @@ const Layout: React.FC = () => {
               </li>
 
               <li className="list-inline-item">
-              <Link to="/collection/0x2765b02b022b1e3cc84afef86d7a21c14b79cec4" className="navLink">NFTs</Link>
+              <Link to="/assets" className="navLink">NFTs</Link>
+              </li>
+
+              <li className="list-inline-item">
+              <Link to="/collection/0x2765b02b022b1e3cc84afef86d7a21c14b79cec4" className="navLink">Collections</Link>
               </li>
           </ul>
       
@@ -31,4 +35,4 @@ const Layout: React.FC = () => {
   )
 }
 
-export default Layout
+export default Layout;
