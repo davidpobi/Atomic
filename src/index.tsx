@@ -1,13 +1,13 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 import { MoralisProvider } from "react-moralis";
-import Collectibles from './Pages/Collectibles';
-import Home from './Pages/Home';
-import Layout from './Pages/Layout';
-import NoMatch from './Pages/NoMatch';
+import Collectibles from './Pages/Collectibles/Collectibles';
+import Home from './Pages/Home/Home';
+import Layout from './Pages/Layout/Layout';
+import NoMatch from './Pages/NoMatch/NoMatch';
 import {Provider} from 'react-redux';
 import store from './Store/store';
-import './styles.css';
+import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProtectedRouteProps } from './Models/interfaces';
 import { AuthGuard } from './Services/AuthGuard';
@@ -35,11 +35,13 @@ root.render(
     <Routes>
       <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="assets" element={ <AuthGuard
-              {...defaultProtectedRouteProps}
-              outlet={<Collectibles />}
-            />} />
+      <Route path="collection"  element={<Collectibles />} />
+      <Route path="collection/:contractId"  element={<Collectibles />}/>
+      {/* <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
+      <Route path="assets/:id" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} /> */}
       </Route>
+
+      
       <Route path="*" element={<NoMatch />} />
     </Routes>
     </MoralisProvider>

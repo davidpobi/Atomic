@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
+import './Login.scss';
 import { useDispatch } from 'react-redux';
 import { isLoggedIn, isLoggedOut } from '../../Store/actions';
 import {useInitMoralis,connectWeb3Wallet,disconnectWeb3Wallet} from '../../Services/AuthService';
 import { useNavigate } from "react-router-dom";
 import { IMoralis } from '../../Models/interfaces';
+
 
 const Login: React.FC = () => {
   const Moralis:IMoralis = useInitMoralis();
@@ -18,7 +20,7 @@ const Login: React.FC = () => {
       //  navigate('/assets');
       }else{
         dispatch(isLoggedOut());
-        navigate('/');
+     //   navigate('/');
       } 
 
   },[Moralis.isAuthenticated]);

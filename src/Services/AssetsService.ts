@@ -50,6 +50,9 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
       })
       .catch((error) =>  {
           console.log(error);
+          if(error.code === "ERR_BAD_REQUEST") {
+              console.log(error.response.data);
+          }
         });
 
     return data;

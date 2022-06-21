@@ -1,5 +1,6 @@
-import React from 'react'
-import Login from '../Components/Auth/Login'
+import React from 'react';
+import './Layout.scss';
+import Login from '../../Components/Auth/Login';
 import { Outlet, Link } from "react-router-dom";
 
 let title: string = 'Atomic';
@@ -16,7 +17,7 @@ const Layout: React.FC = () => {
               </li>
 
               <li className="list-inline-item">
-              <Link to="/assets" className="navLink">NFTs</Link>
+              <Link to="/collection/0x2765b02b022b1e3cc84afef86d7a21c14b79cec4" className="navLink">NFTs</Link>
               </li>
           </ul>
       

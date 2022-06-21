@@ -1,0 +1,169 @@
+
+//Iphones
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    
+}
+
+
+
+
+
+
+/* ----------- iPhone SE ----------- */
+/* Portrait and Landscape */
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-height: 568px) 
+and (-webkit-min-device-pixel-ratio: 2) 
+and (orientation: portrait) {
+
+}
+
+
+
+
+//Surface Pro
+// Medium devices (tablets, less than 992px)
+@media only screen and (height: 1368px) 
+and (width: 912px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+
+
+}
+
+
+
+ //tablet
+// Medium devices (tablets, less than 992px)
+@media only screen 
+and (min-width: 590px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+}
+
+
+
+//Ipad Air
+// Medium devices (tablets, less than 992px)
+@media only screen 
+and (min-width: 575px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+
+
+//Ipad
+// Medium devices (tablets, less than 992px)
+@media only screen 
+and (min-width: 768px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+ 
+
+}
+
+
+
+
+
+/* ----------- iPad Pro ----------- */
+/* Portrait and Landscape */
+@media only screen 
+and (min-width: 1024px) 
+and  (max-device-width: 1024px)
+and (max-height: 1366px) 
+and (-webkit-min-device-pixel-ratio: 1.5) {
+
+
+}
+
+
+
+
+/* Mini Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 800px){
+
+
+}
+
+
+
+
+/* Mini 2 Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 1366px) {
+
+
+}
+
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 1025px) {
+ 
+
+}
+
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width:  1290px) {
+  .header {
+    position: relative;
+    top: 0%;
+    height: 5vh;
+    width: 100vw;  
+    background-color: white;
+
+    .title {
+      position: relative;
+      top: -4px;
+      left: 20px;
+      color: rgb(87, 87, 87);
+      font-size: 35px;
+      font-weight: 500;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: 42px;
+      }
+    }
+    
+     
+  
+  .nav {
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    width: 300px;
+       
+        .nav-item {
+          width: 70px;
+        }
+      
+      .navLink {
+        text-decoration: none;
+        color: grey;
+        margin-right: 40px;
+        position: relative;
+        left: 0px;
+        top:5px;
+      }
+    }
+  }
+  
+ 
+ 
+  .main {
+    position: relative;
+    top: 2px;
+    left: 5vw;
+    width: 90vw;
+    height: 95vh;
+    background-color: white;
+  }
+
+}
