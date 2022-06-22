@@ -76,7 +76,7 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
 
     const config = {
         method: 'get',
-        url: `${baseURL}?contractAddress=${contractAddress}&startToken=${startToken}&withMetadata=${withMetadata}`,
+        url: `${baseURL}?contractAddress=${contractAddress}&startToken=${startToken}&limit=5&withMetadata=${withMetadata}`,
         headers: { }
       };
       

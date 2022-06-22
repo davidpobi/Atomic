@@ -7,56 +7,79 @@ import { getCollection} from '../../Store/actions';
 import { useParams } from 'react-router-dom';
 
 const Collections: React.FC = () => {
-  /** Controller */
  
-  const { isAuthenticated, user } = useMoralis();
-  const Web3Api = useMoralisWeb3Api();
+  /** Controller */
 
- // const [userAddress, setUserAddress] = useState("");
   const [startToken, setStartToken] = useState("");
+  const [currentTokenPos, setCurrentTokenPos] = useState(0);
+  const [pageTokens, setPageTokens] = useState([""]);
   const [hasNextPage, setHasNextPage] = useState(true);
   const collection: Array<any>  =  useSelector((state:any) => state.collections);
   const dispatch = useDispatch();
   const { contractId } = useParams();
 
- 
-  useEffect(() => {
-      if(!isAuthenticated) {return;}
-      //  setUserAddress(user?.get("ethAddress"));
-
-      
-   
-  }, []);
-
 
 
   useEffect(() => {
     if(contractId && validateEthereumAddress(contractId)) {
-        getUserAssetsByContract(contractId,startToken); 
+      getNFTsByContract(contractId,startToken,true); 
       }
   },[contractId]);
 
 
 
-
-
-  const getUserAssetsByContract = async (contractAddress: string, startToken: string) => {
+  const getNFTsByContract = async (contractAddress: string, pageToken: string, setNext: boolean) => {
     if(!hasNextPage) {
       console.log('done fetching');
       return;
     }
 
-    const result = await getNFtsByContract_Alchemy("eth",contractAddress,startToken);
-    console.log(result.assets);
-    if(result.assets.length > 0) {
-      dispatch(getCollection(result.assets));
-    }
-    if(!result.nextToken) {
-      setHasNextPage(false);
+    const result = await getNFtsByContract_Alchemy("eth",contractAddress,pageToken);
+    //console.log(result);
+      if(result.assets.length > 0) {
+        dispatch(getCollection(result.assets));
+      }
+
+      if(!result.nextToken) {
+        setHasNextPage(false);
+        return;
+      }
+
+      if(setNext) {
+      setStartToken(result.nextToken);
+      }
+   }
+
+
+
+   const pageNext = () => {
+    getNFTsByContract(contractId || "",startToken,true);
+    setPageTokens(oldArray => [...oldArray, startToken]);
+    setCurrentTokenPos((currentTokenPos + 1));
+   }
+ 
+
+
+   const pageBack = () => {
+     const offset = pageTokens[currentTokenPos - 1];
+     setCurrentTokenPos((currentTokenPos - 1));
+
+     if(currentTokenPos == 0) {
+      console.log('1st page');
+      setCurrentTokenPos(0);
       return;
     }
 
-    setStartToken(result.nextToken);
+     setStartToken(pageTokens[pageTokens.length-1]);
+     const set = pageTokens;
+     set.pop();
+     setPageTokens(set);
+
+     if(offset === undefined) {
+      getNFTsByContract(contractId || "","",false);
+     }else{
+      getNFTsByContract(contractId || "",offset,false);
+     }
    }
  
 
@@ -83,7 +106,7 @@ const Collections: React.FC = () => {
     <> 
         <div className='page-header'>
           <h1 className='heading'>Collections</h1>
-          <button  onClick={() => getUserAssetsByContract(contractId || '',startToken)}  className="btn btn-md btn-primary getCollectibles">Get Collection</button> 
+          <button  onClick={() => getNFTsByContract(contractId || '',startToken,true)}  className="btn btn-md btn-primary getCollectibles">Get Collection</button> 
         </div>
  
           <div className='assets-list'>
@@ -94,7 +117,7 @@ const Collections: React.FC = () => {
                   <li className="list-inline-item center" key={asset.id.tokenId}>
                     <div className="asset-card">
                       {
-                        asset.metadata.image_url ?  <img src={asset.metadata.image_url} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
+                        asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
                       }
                     <label className='name center'>{asset.metadata.name}</label>
                     </div>
@@ -106,6 +129,25 @@ const Collections: React.FC = () => {
        
             </ul>
           </div>
+
+          <ul className='actionsList'>
+              <li>
+                  <button  onClick={() => pageNext()} className='actionBtn'>
+                  <span className="material-icons icon center">
+                      arrow_forward
+                      </span> 
+                  </button>
+              </li>
+
+              <li>
+                  <button   onClick={() => pageBack()} className='actionBtn'>
+                  <span className="material-icons icon center">
+                      arrow_back
+                  </span> 
+                  </button>
+              </li>
+          </ul>
+          
     </>
 
   )
