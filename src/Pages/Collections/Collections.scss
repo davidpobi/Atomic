@@ -213,4 +213,23 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         }
       
       }
+
+
+
+      .Toastify__toast {
+        background-color: white;
+        border: 2px solid grey;
+        border-radius: 15px;
+        font-size: 19px;
+        width: 190px;
+      }
+
+      .Toastify__toast-container--bottom-right {
+        position: absolute;
+        bottom: 20px;
+        right: -170px;
+      }
 }
+
+
+

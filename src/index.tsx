@@ -12,7 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProtectedRouteProps } from './Models/interfaces';
 import { AuthGuard } from './Services/AuthGuard';
 import Collections from './Pages/Collections/Collections';
-import '@ionic/react/css/core.css';
+
+
+
 
 
 const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {

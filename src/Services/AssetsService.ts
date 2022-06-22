@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const apiKey = "lW_NoYAb4qo9f2cBMfM4HzpxrGJ05nnT";
@@ -43,10 +45,11 @@ export const getUserOwnedAssets_Alchemy = async(chain: string, ethAddress: strin
 
          const results: Array<any>  = ownedNfts;
          results.map((x:any) => {
-             
-              if(x.media[0].raw.length != 0) {
+              if(x.media[0].raw.length !== 0) {
              data.assets.push(x);
              }
+
+             return 0;
          });
         // console.log(JSON.stringify(response.data, null, 2))
         console.log(response.data);
@@ -87,9 +90,10 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
 
          const results: Array<any>  = nfts;
          results.map((x:any) => {
-            if(x.media[0].raw.length != 0) {
+            if(x.media[0].raw.length !== 0) {
              data.assets.push(x);
             }
+            return 0;
          });
         //  console.log(JSON.stringify(response.data, null, 2))
       })
@@ -123,4 +127,24 @@ export const getNFtsByContract_Moralis = async(Web3Api:any, chain: string, addre
 
 
     return assets;
+}
+
+
+export const presentToast = (message: string, customId: string) => {
+    if(toast.isActive(customId)) {
+        return;
+    }  
+    toast(message,{
+        position: toast.POSITION.BOTTOM_RIGHT,
+        autoClose: 1000,
+        icon: false,
+        closeButton: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        toastId: customId,
+        //className: 'toast'
+    });
 }

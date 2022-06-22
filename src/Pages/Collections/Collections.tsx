@@ -1,10 +1,10 @@
 import React,{ useEffect, useState }  from 'react';
 import "./Collections.scss";
-import { useMoralis,useMoralisWeb3Api } from "react-moralis";
-import { getNFtsByContract_Alchemy } from '../../Services/AssetsService';
+import { getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
 import { getCollection} from '../../Store/actions';
 import { useParams } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 const Collections: React.FC = () => {
  
@@ -20,6 +20,7 @@ const Collections: React.FC = () => {
 
 
 
+
   useEffect(() => {
     if(contractId && validateEthereumAddress(contractId)) {
       getNFTsByContract(contractId,startToken,true); 
@@ -29,13 +30,8 @@ const Collections: React.FC = () => {
 
 
   const getNFTsByContract = async (contractAddress: string, pageToken: string, setNext: boolean) => {
-    if(!hasNextPage) {
-      console.log('done fetching');
-      return;
-    }
-
     const result = await getNFtsByContract_Alchemy("eth",contractAddress,pageToken);
-    //console.log(result);
+    console.log(result);
       if(result.assets.length > 0) {
         dispatch(getCollection(result.assets));
       }
@@ -53,6 +49,11 @@ const Collections: React.FC = () => {
 
 
    const pageNext = () => {
+    if(!hasNextPage) {
+      presentToast_("End of collection !","end-toast");
+      return;
+    }
+
     getNFTsByContract(contractId || "",startToken,true);
     setPageTokens(oldArray => [...oldArray, startToken]);
     setCurrentTokenPos((currentTokenPos + 1));
@@ -63,17 +64,16 @@ const Collections: React.FC = () => {
    const pageBack = () => {
      const offset = pageTokens[currentTokenPos - 1];
      setCurrentTokenPos((currentTokenPos - 1));
-
-     if(currentTokenPos == 0) {
-      console.log('1st page');
+     if(currentTokenPos === 0) {
       setCurrentTokenPos(0);
+      presentToast_("Start of collection !",'start-toast');
       return;
     }
 
      setStartToken(pageTokens[pageTokens.length-1]);
      const set = pageTokens;
      set.pop();
-     setPageTokens(set);
+     setPageTokens(set); 
 
      if(offset === undefined) {
       getNFTsByContract(contractId || "","",false);
@@ -82,7 +82,6 @@ const Collections: React.FC = () => {
      }
    }
  
-
 
 
    const validateEthereumAddress = (address : string) => {
@@ -99,14 +98,18 @@ const Collections: React.FC = () => {
    }
 
 
+   const presentToast_ = (message: string,customId: string) => {
+     presentToast(message,customId);
+   }
 
   /** View */
   return (
  
     <> 
+        
         <div className='page-header'>
           <h1 className='heading'>Collections</h1>
-          <button  onClick={() => getNFTsByContract(contractId || '',startToken,true)}  className="btn btn-md btn-primary getCollectibles">Get Collection</button> 
+          <button  onClick={() => getNFTsByContract(contractId || '',startToken,true)}  className="btn btn-md btn-primary getCollectibles">New Collection</button> 
         </div>
  
           <div className='assets-list'>
@@ -148,6 +151,7 @@ const Collections: React.FC = () => {
               </li>
           </ul>
           
+          <ToastContainer  />
     </>
 
   )
