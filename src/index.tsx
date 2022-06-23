@@ -43,10 +43,11 @@ root.render(
       <Route path="collection/:contractId"  element={<Collections />}/>
       <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
       {/* <Route path="assets/:id" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} /> */}
+      <Route path="*" element={<NoMatch />} />
       </Route>
 
       
-      <Route path="*" element={<NoMatch />} />
+    
     </Routes>
     </MoralisProvider>
     </BrowserRouter>
