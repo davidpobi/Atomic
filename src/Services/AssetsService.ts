@@ -142,7 +142,6 @@ export const getContractMetadata = async(contractAddress: string,) => {
       };
       
       await axios(options).then((response) => {
-          console.log(response);
         if(response.data !== undefined) {
             data = response.data;
         }

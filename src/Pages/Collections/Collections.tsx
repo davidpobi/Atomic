@@ -3,15 +3,18 @@ import "./Collections.scss";
 import { getContractMetadata, getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
 import { getCollection} from '../../Store/actions';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Collections: React.FC = () => {
- 
+  const navigate = useNavigate();
   /** Contract Metadata */
   const [contractData, setContractData] = useState({name:"",symbol:"",tokenType:"",totalSupply: 0});
   const [isContractReady,setIsContractReady] = useState<boolean>(true);
-  const [isShowTokenType,setIsShowTokenType] = useState(false);
+  const [isShowTokenType,setIsShowTokenType] = useState(true);
+
+
+
 
 
   const [startToken, setStartToken] = useState("");
@@ -23,6 +26,9 @@ const Collections: React.FC = () => {
   const dispatch = useDispatch();
   const { contractId } = useParams();
 
+  /** Search */
+  const [isShowSearchBar,setShowSearchBar] = useState(false);
+  const [addressInput, setAddressInput] = useState("");
 
 
 
@@ -52,10 +58,9 @@ const Collections: React.FC = () => {
 
   const getNFTsByContract = async (contractAddress: string, pageToken: string, setNext: boolean) => {
     const result = await getNFtsByContract_Alchemy("eth",contractAddress,pageToken);
-    console.log(result);
+
       if(result.assets.length > 0) {
         dispatch(getCollection(result.assets));
-      //  return;
       }
 
 
@@ -132,6 +137,18 @@ const Collections: React.FC = () => {
 
 
 
+   const toggleSearchBar = () => {
+     setShowSearchBar(!isShowSearchBar);
+   }
+
+
+
+   const getNewCollection = () => {
+    window.open(window.location.origin + '/collection/'+ addressInput,'_self');
+   }
+
+
+   
   /** View */
   return (
  
@@ -154,12 +171,25 @@ const Collections: React.FC = () => {
                 <span hidden={!isShowTokenType} className="btn badge badge-pill badge-primary token-type">
                 {contractData.tokenType.toUpperCase()}
                 </span>
-              </h1>
-          
-                <button className="btn btn-md btn-primary getCollectibles">
-                <span className="material-icons icon">add</span> 
-                <span className='txt'>New Collection</span>
-                </button> 
+                </h1>
+                {
+                  isShowSearchBar ?  <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)} type="input" placeholder="0x320b70123fde6c653dr644b5dt0b6312e42e.." className="address_input form-control"/> : <span></span>
+                }
+               
+
+                {
+                 ( addressInput.length > 2 ) ? 
+                 <button onClick={() => getNewCollection()} className="btn btn-md btn-primary getCollectibles">
+                 <span className="material-icons icon">rocket</span> 
+                 <span className='txt'>Get Collection</span>
+                 </button> 
+                 :
+                 <button onClick={() => toggleSearchBar()} className="btn btn-md btn-primary getCollectibles">
+                 <span className="material-icons icon">add</span> 
+                 <span className='txt'>New Collection</span>
+                 </button> 
+                }
+             
               </div>
       
                 <div  className='assets-list'>
