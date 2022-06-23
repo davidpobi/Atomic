@@ -180,10 +180,10 @@ const Collections: React.FC = () => {
                    <div style={{width:"100%"}}>
                     <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)}  type="input" placeholder="0x320b...  contract address" className="address_input"/> 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
-                  <span className="material-icons icon">
+                  <span className="material-icons center icon">
                      rocket
                       </span> 
-                  </button>
+                  </button> 
                    </div>
                   : <span></span>
                 }
