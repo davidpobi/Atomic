@@ -130,6 +130,16 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
           font-weight: 500;
         }
 
+        .name_address {
+          text-decoration: underline;
+          font-weight: 400;
+          a {
+            text-decoration: none;
+            color: grey;
+          }
+        }
+
+
         .symbol {
           position: relative;
           top: -2px;
@@ -262,6 +272,14 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
             }
         }
           
+        }
+
+        .pager {
+          font-size: 11px;
+          border: 1px solid goldenrod;
+          &:hover {
+            border: 1px solid goldenrod;
+          }
         }
       
       }

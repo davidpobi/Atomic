@@ -18,6 +18,7 @@ const Collections: React.FC = () => {
   const [currentTokenPos, setCurrentTokenPos] = useState(0);
   const [pageTokens, setPageTokens] = useState([""]);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [totalNftsCount, setTotalNftsCount] = useState(0);
   const collection: Array<any>  =  useSelector((state:any) => state.collections);
   const dispatch = useDispatch();
   const { contractId } = useParams();
@@ -27,8 +28,8 @@ const Collections: React.FC = () => {
 
   useEffect(() => {
     if(contractId && validateEthereumAddress(contractId)) {
-      getContractMetadata_(contractId);
-      getNFTsByContract(contractId,startToken,true); 
+      getContractMetadata_(contractId.trim());
+      getNFTsByContract(contractId.trim(),startToken,true); 
       }
   },[contractId]);
 
@@ -54,7 +55,9 @@ const Collections: React.FC = () => {
     console.log(result);
       if(result.assets.length > 0) {
         dispatch(getCollection(result.assets));
+      //  return;
       }
+
 
       if(!result.nextToken) {
         setHasNextPage(false);
@@ -63,6 +66,8 @@ const Collections: React.FC = () => {
 
       if(setNext) {
       setStartToken(result.nextToken);
+      const updateNftsCount = totalNftsCount + result.assets.length;
+      setTotalNftsCount(updateNftsCount);
       }
    }
 
@@ -100,6 +105,9 @@ const Collections: React.FC = () => {
      }else{
       getNFTsByContract(contractId || "",offset,false);
      }
+
+     const updateNftsCount = totalNftsCount - 5;
+     setTotalNftsCount(updateNftsCount);
    }
  
 
@@ -133,7 +141,12 @@ const Collections: React.FC = () => {
               <div>
               <div  className='page-header'>
                 <h1 className='heading'>
-                  <span className='name'>{contractData.name}</span> 
+                  {
+                    contractData.name? <span className='name'>{contractData.name}</span> : <span className='name_address'><a  href={"https://etherscan.io/address/" + contractId } target="_blank">{contractId?.slice(0,12)}
+                    <span className="material-icons">open_in_new</span></a>
+                    </span> 
+                  }
+
                 <span onClick={() => setIsShowTokenType(!isShowTokenType) } className="btn badge badge-pill badge-primary symbol">
                 {contractData.symbol}
                 </span>
@@ -174,6 +187,11 @@ const Collections: React.FC = () => {
         
 
                 <ul  className='actionsList'>
+                   <li hidden={contractData.totalSupply === undefined}>
+                        <button  className='actionBtn pager'>
+                         {totalNftsCount} of {contractData.totalSupply}
+                        </button>
+                    </li>
                     <li>
                         <button  onClick={() => pageNext()}   disabled={!isContractReady} className='actionBtn'>
                         <span className="material-icons icon center">
