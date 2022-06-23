@@ -36,6 +36,9 @@ const Collections: React.FC = () => {
     if(contractId && validateEthereumAddress(contractId)) {
       getContractMetadata_(contractId.trim());
       getNFTsByContract(contractId.trim(),startToken,true); 
+      }else{
+        setIsContractReady(false);
+        presentToast_("invalidAddress-toast","Invalid Contract Address !!",3000,toast.POSITION.BOTTOM_CENTER,'toast-red');
       }
   },[contractId]);
 
@@ -140,7 +143,7 @@ const Collections: React.FC = () => {
    const toggleSearchBar = () => {
      setShowSearchBar(!isShowSearchBar);
    }
-
+ 
 
 
    const getNewCollection = () => {
@@ -148,7 +151,7 @@ const Collections: React.FC = () => {
    }
 
 
-   
+
   /** View */
   return (
  
@@ -173,7 +176,16 @@ const Collections: React.FC = () => {
                 </span>
                 </h1>
                 {
-                  isShowSearchBar ?  <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)} type="input" placeholder="0x320b70123fde6c653dr644b5dt0b6312e42e.." className="address_input form-control"/> : <span></span>
+                  isShowSearchBar ?
+                   <div style={{width:"100%"}}>
+                    <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)}  type="input" placeholder="0x320b...  contract address" className="address_input"/> 
+                  <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
+                  <span className="material-icons icon">
+                     rocket
+                      </span> 
+                  </button>
+                   </div>
+                  : <span></span>
                 }
                
 
@@ -185,7 +197,7 @@ const Collections: React.FC = () => {
                  </button> 
                  :
                  <button onClick={() => toggleSearchBar()} className="btn btn-md btn-primary getCollectibles">
-                 <span className="material-icons icon">add</span> 
+                 <span className="material-icons icon">loop</span> 
                  <span className='txt'>New Collection</span>
                  </button> 
                 }
@@ -217,6 +229,30 @@ const Collections: React.FC = () => {
         
 
                 <ul  className='actionsList'>
+                  <li>
+
+                    {/* {
+                     ( addressInput.length > 2 ) ? 
+                     <button onClick={() => getNewCollection()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
+                     <span className="material-icons icon center">
+                        rocket
+                         </span> 
+                     </button>
+                     :
+                     <button onClick={() => toggleSearchBar()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
+                     <span className="material-icons icon center">
+                        loop
+                         </span> 
+                     </button>
+                    } */}
+                         <button onClick={() => toggleSearchBar()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
+                          <span className="material-icons icon center">
+                        loop
+                         </span> 
+                     </button>
+                    </li>
+
+
                    <li hidden={contractData.totalSupply === undefined}>
                         <button  className='actionBtn pager'>
                          {totalNftsCount} of {contractData.totalSupply}
