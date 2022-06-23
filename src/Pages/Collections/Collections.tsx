@@ -142,7 +142,7 @@ const Collections: React.FC = () => {
               <div  className='page-header'>
                 <h1 className='heading'>
                   {
-                    contractData.name? <span className='name'>{contractData.name}</span> : <span className='name_address'><a  href={"https://etherscan.io/address/" + contractId } target="_blank">{contractId?.slice(0,12)}
+                    contractData.name? <span className='name'>{contractData.name}</span> : <span className='name_address' hidden={collection.length == 0}><a  href={"https://etherscan.io/address/" + contractId } target="_blank">{contractId?.slice(0,12)}
                     <span className="material-icons">open_in_new</span></a>
                     </span> 
                   }
