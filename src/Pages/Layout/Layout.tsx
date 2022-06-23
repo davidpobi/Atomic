@@ -11,7 +11,7 @@ const Layout: React.FC = () => {
         <div className="header">
          <label className="title">{title}</label>
 
-          <ul className="ul-list-inline nav">
+          {/* <ul className="ul-list-inline nav">
             <li className="list-inline-item nav-item">
               <Link to="/" className="navLink">Home</Link>
               </li>
@@ -25,7 +25,7 @@ const Layout: React.FC = () => {
               </li>
           </ul>
       
-         <Login/>
+         <Login/> */}
         </div>
 
         <div className="main">

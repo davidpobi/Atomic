@@ -1,14 +1,18 @@
 import React,{ useEffect, useState }  from 'react';
 import "./Collections.scss";
-import { getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
+import { getContractMetadata, getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
 import { getCollection} from '../../Store/actions';
 import { useParams } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Collections: React.FC = () => {
  
-  /** Controller */
+  /** Contract Metadata */
+  const [contractData, setContractData] = useState({name:"",symbol:"",tokenType:"",totalSupply: 0});
+  const [isContractReady,setIsContractReady] = useState<boolean>(true);
+  const [isShowTokenType,setIsShowTokenType] = useState(false);
+
 
   const [startToken, setStartToken] = useState("");
   const [currentTokenPos, setCurrentTokenPos] = useState(0);
@@ -23,9 +27,25 @@ const Collections: React.FC = () => {
 
   useEffect(() => {
     if(contractId && validateEthereumAddress(contractId)) {
+      getContractMetadata_(contractId);
       getNFTsByContract(contractId,startToken,true); 
       }
   },[contractId]);
+
+
+
+
+  const getContractMetadata_ = async (contractAddress: string,) => {
+     const data:any =  await getContractMetadata(contractAddress);
+     if(data === null) {
+       setIsContractReady(false);
+       presentToast_("invalidAddress-toast","Invalid Contract Address !!",3000,toast.POSITION.BOTTOM_CENTER,'toast-red');
+       return;
+     }
+
+     setIsContractReady(true);
+     setContractData(data.contractMetadata);
+  }
 
 
 
@@ -50,7 +70,7 @@ const Collections: React.FC = () => {
 
    const pageNext = () => {
     if(!hasNextPage) {
-      presentToast_("End of collection !","end-toast");
+      presentToast_("end-toast","End of collection !",1000,toast.POSITION.BOTTOM_RIGHT);
       return;
     }
 
@@ -60,13 +80,13 @@ const Collections: React.FC = () => {
    }
  
 
-
+ 
    const pageBack = () => {
      const offset = pageTokens[currentTokenPos - 1];
      setCurrentTokenPos((currentTokenPos - 1));
      if(currentTokenPos === 0) {
       setCurrentTokenPos(0);
-      presentToast_("Start of collection !",'start-toast');
+      presentToast_("start-toast","Start of collection !",1000,toast.POSITION.BOTTOM_RIGHT);
       return;
     }
 
@@ -98,59 +118,94 @@ const Collections: React.FC = () => {
    }
 
 
-   const presentToast_ = (message: string,customId: string) => {
-     presentToast(message,customId);
+   const presentToast_ = (customId: string,message: string,duration: number,position:any,toastClass?:string) => {
+     presentToast(customId,message,duration,position,toastClass);
    }
+
+
 
   /** View */
   return (
  
     <> 
-        
-        <div className='page-header'>
-          <h1 className='heading'>Collections</h1>
-          <button  onClick={() => getNFTsByContract(contractId || '',startToken,true)}  className="btn btn-md btn-primary getCollectibles">New Collection</button> 
-        </div>
- 
-          <div className='assets-list'>
-            <ul className='list-inline'>
-              {
-               collection.map((asset) => {
-                  return  (
-                  <li className="list-inline-item center" key={asset.id.tokenId}>
-                    <div className="asset-card">
-                      {
-                        asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
-                      }
-                    <label className='name center'>{asset.metadata.name}</label>
-                    </div>
-        
-                   </li>
-                    )
-                })
-              }
-       
-            </ul>
-          </div>
+          {
+            isContractReady && (
+              <div>
+              <div  className='page-header'>
+                <h1 className='heading'>
+                  <span className='name'>{contractData.name}</span> 
+                <span onClick={() => setIsShowTokenType(!isShowTokenType) } className="btn badge badge-pill badge-primary symbol">
+                {contractData.symbol}
+                </span>
 
-          <ul className='actionsList'>
-              <li>
-                  <button  onClick={() => pageNext()} className='actionBtn'>
-                  <span className="material-icons icon center">
-                      arrow_forward
-                      </span> 
-                  </button>
-              </li>
-
-              <li>
-                  <button   onClick={() => pageBack()} className='actionBtn'>
-                  <span className="material-icons icon center">
-                      arrow_back
-                  </span> 
-                  </button>
-              </li>
-          </ul>
+                <span hidden={!isShowTokenType} className="btn badge badge-pill badge-primary token-type">
+                {contractData.tokenType.toUpperCase()}
+                </span>
+              </h1>
           
+                <button className="btn btn-md btn-primary getCollectibles">
+                <span className="material-icons icon">add</span> 
+                <span className='txt'>New Collection</span>
+                </button> 
+              </div>
+      
+                <div  className='assets-list'>
+                  <ul className='list-inline'>
+                    {
+                    collection.map((asset) => {
+
+                        return  (
+                        <li className="list-inline-item center" key={asset.id.tokenId}>
+                          <div className="asset-card">
+                            {
+                              asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
+                            }
+                          <label className='name center'>{asset.metadata.name}</label>
+                          </div>
+              
+                        </li>
+                          )
+                      })
+                    }
+            
+                  </ul>
+                </div>
+
+        
+
+                <ul  className='actionsList'>
+                    <li>
+                        <button  onClick={() => pageNext()}   disabled={!isContractReady} className='actionBtn'>
+                        <span className="material-icons icon center">
+                            arrow_forward
+                            </span> 
+                        </button>
+                    </li>
+
+                    <li>
+                        <button   onClick={() => pageBack()}  disabled={!isContractReady} className='actionBtn'>
+                        <span className="material-icons icon center">
+                            arrow_back
+                        </span> 
+                        </button>
+                    </li>
+                </ul>
+
+              </div>
+
+            )
+          }
+
+        
+         {
+           !isContractReady && (
+            <div  className="invalidContract">
+            <label className='msg center'>Invalid Contract Address. Check Again</label>
+          </div>
+          
+           )
+         }
+
           <ToastContainer  />
     </>
 

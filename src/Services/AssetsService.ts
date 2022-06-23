@@ -130,13 +130,42 @@ export const getNFtsByContract_Moralis = async(Web3Api:any, chain: string, addre
 }
 
 
-export const presentToast = (message: string, customId: string) => {
+
+export const getContractMetadata = async(contractAddress: string,) => {
+    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getContractMetadata`;
+    let data: any = null;
+
+    const options: any = {
+        method: 'get',
+        url: `${baseURL}?contractAddress=${contractAddress}`,
+        headers: { }
+      };
+      
+      await axios(options).then((response) => {
+        if(response.data !== undefined) {
+            data = response.data;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        if(error.code === "ERR_BAD_REQUEST") {
+            console.log(error.response.data);
+        }
+      });
+
+      return data;
+}
+
+
+
+
+export const presentToast = (customId: string,message: string,duration:number,position:any, toastClass?: string) => {
     if(toast.isActive(customId)) {
         return;
     }  
     toast(message,{
-        position: toast.POSITION.BOTTOM_RIGHT,
-        autoClose: 1000,
+        position: position ,
+        autoClose: duration,
         icon: false,
         closeButton: false,
         hideProgressBar: true,
@@ -145,6 +174,6 @@ export const presentToast = (message: string, customId: string) => {
         draggable: true,
         progress: undefined,
         toastId: customId,
-        //className: 'toast'
+        className: toastClass
     });
 }
