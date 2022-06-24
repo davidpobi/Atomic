@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const apiKey = "lW_NoYAb4qo9f2cBMfM4HzpxrGJ05nnT";
+
 const withMetadata = "true";
 
 /** Fetches Users NFT Assets from chain with Moralis API  */
@@ -25,7 +25,7 @@ export const getUserOwnedAssets_Moralis = async(Web3Api:any, chain: string, addr
 
 /** Fetches Users NFT Assets from chain with Alchemy API */
 export const getUserOwnedAssets_Alchemy = async(chain: string, ethAddress: string, startToken: string) => {
-    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTs`;
+    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}/getNFTs`;
     
     let data: {assets: Array<any>, nextToken: string} = {
         assets: [],
@@ -70,7 +70,7 @@ export const getUserOwnedAssets_Alchemy = async(chain: string, ethAddress: strin
 
 /** Fetches NFTs belonging to a specified contract */
 export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: string, startToken: string) => {
-    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getNFTsForCollection`;
+    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}/getNFTsForCollection`;
 
     let data: {assets: Array<any>, nextToken: string} = {
         assets: [],
@@ -132,7 +132,7 @@ export const getNFtsByContract_Moralis = async(Web3Api:any, chain: string, addre
 
 
 export const getContractMetadata = async(contractAddress: string,) => {
-    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${apiKey}/getContractMetadata`;
+    const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${process.env.REACT_APP_ALCHEMY_API_KEY}/getContractMetadata`;
     let data: any = null;
 
     const options: any = {

@@ -36,7 +36,7 @@ root.render(
    <React.StrictMode>
   <Provider store={store}>
   <BrowserRouter>
-    <MoralisProvider serverUrl="https://hzznegusqz14.usemoralis.com:2053/server" appId="4WkNtOvdqLbJXOxYV3obuGU3WhzbrJ6xQzUkAtWY">
+    <MoralisProvider serverUrl={process.env.REACT_APP_MORALIS_SERVER_URL || ""} appId={process.env.REACT_APP_MORALIS_API_KEY || ""}>
     <Routes>
       <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
