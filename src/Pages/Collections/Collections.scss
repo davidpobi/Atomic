@@ -112,7 +112,7 @@
       .getBtn {
         position: relative;
         top:10px;
-        left: 10px;
+        left: 5px;
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -219,17 +219,20 @@
           border: 2px solid rgb(231, 231, 231);
 
           .icon {
-            color: blanchedalmond;
+            color: rgb(169, 223, 245);
           }
       }
         
       }
 
+
+
       .pager {
         font-size: 8px;
-        border: 1px solid goldenrod;
+        border: 1px solid white;
+        color: grey;
         &:hover {
-          border: 1px solid goldenrod;
+          border: 1px solid white;
         }
       }
 
@@ -580,9 +583,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
         .pager {
           font-size: 11px;
-          border: 1px solid goldenrod;
+          border: 1px solid rgb(235, 235, 235);
           &:hover {
-            border: 1px solid goldenrod;
+            border: 1px solid rgb(235, 235, 235);
           }
         }
       

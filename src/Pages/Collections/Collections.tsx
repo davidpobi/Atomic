@@ -252,12 +252,6 @@ const Collections: React.FC = () => {
                      </button>
                     </li>
 
-
-                   <li hidden={contractData.totalSupply === undefined}>
-                        <button  className='actionBtn pager'>
-                         {totalNftsCount} of {contractData.totalSupply}
-                        </button>
-                    </li>
                     <li>
                         <button  onClick={() => pageNext()}   disabled={!isContractReady} className='actionBtn'>
                         <span className="material-icons icon center">
@@ -271,6 +265,13 @@ const Collections: React.FC = () => {
                         <span className="material-icons icon center">
                             arrow_back
                         </span> 
+                        </button>
+                    </li>
+
+
+                   <li hidden={contractData.totalSupply === undefined}>
+                        <button  className='actionBtn pager'>
+                         {totalNftsCount} / {contractData.totalSupply}
                         </button>
                     </li>
                 </ul>

@@ -3,7 +3,7 @@ import './Layout.scss';
 import Login from '../../Components/Auth/Login';
 import { Outlet, Link } from "react-router-dom";
 
-let title: string = 'Atomic';
+let title: string = 'GalleryX';
 
 const Layout: React.FC = () => {
   return (
