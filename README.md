@@ -5,6 +5,8 @@ A Better Way To View & Share Collections On The Ethereum blockchain [Demo](https
 
 
 ### Popular Contracts
+Test Contracts of popular collections to play with:
+
 0x620b70123fb810f6c653da7644b5dd0b6312e4d8
 
 
@@ -14,9 +16,10 @@ A Better Way To View & Share Collections On The Ethereum blockchain [Demo](https
 0xe785e82358879f061bc3dcac6f0444462d4b5330
 
 
+
 # Getting Started with Atomic
 ```
-git clone
+git clone https://github.com/davidpobi/Atomic.git
 cd atomic
 npm install
 ```
