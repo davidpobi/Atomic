@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProtectedRouteProps } from './Models/interfaces';
 import { AuthGuard } from './Services/AuthGuard';
 import Collections from './Pages/Collections/Collections';
+import React from 'react';
 
 
 
@@ -32,7 +33,7 @@ const root = ReactDOM.createRoot(
 
 
 root.render(
-    // <React.StrictMode></React.StrictMode>
+   <React.StrictMode>
   <Provider store={store}>
   <BrowserRouter>
     <MoralisProvider serverUrl="https://hzznegusqz14.usemoralis.com:2053/server" appId="4WkNtOvdqLbJXOxYV3obuGU3WhzbrJ6xQzUkAtWY">
@@ -42,7 +43,6 @@ root.render(
       <Route path="collection"  element={<Collections />} />
       <Route path="collection/:contractId"  element={<Collections />}/>
       <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
-      {/* <Route path="assets/:id" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} /> */}
       <Route path="*" element={<NoMatch />} />
       </Route>
 
@@ -52,4 +52,5 @@ root.render(
     </MoralisProvider>
     </BrowserRouter>
     </Provider>
+    </React.StrictMode>
 );

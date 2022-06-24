@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "galleryx",
+    "site": "atomic-react",
     "public": "build",
     "ignore": [
       "firebase.json",

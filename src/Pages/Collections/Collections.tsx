@@ -156,6 +156,7 @@ const Collections: React.FC = () => {
   return (
  
     <> 
+          <ToastContainer  />
           {
             isContractReady && (
               <div>
@@ -178,7 +179,7 @@ const Collections: React.FC = () => {
                 {
                   isShowSearchBar ?
                    <div style={{width:"100%"}}>
-                    <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)}  type="input" placeholder="0x320b...  contract address" className="address_input"/> 
+                    <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)}  type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
                   <span className="material-icons center icon">
                      rocket
@@ -224,6 +225,7 @@ const Collections: React.FC = () => {
                     }
             
                   </ul>
+           
                 </div>
 
         
@@ -275,7 +277,7 @@ const Collections: React.FC = () => {
                         </button>
                     </li>
                 </ul>
-
+          
               </div>
 
             )
@@ -291,7 +293,6 @@ const Collections: React.FC = () => {
            )
          }
 
-          <ToastContainer  />
     </>
 
   )
