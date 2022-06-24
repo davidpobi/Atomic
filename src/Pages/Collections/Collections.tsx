@@ -148,13 +148,17 @@ const Collections: React.FC = () => {
 
    const getNewCollection = () => {
      if(!validateEthereumAddress(addressInput || "")) {
-      presentToast_("invalidAddress-toast","Invalid Contract Address !!",1000,toast.POSITION.TOP_CENTER,'toast-red');
+      presentToast_("invalidAddress-toast","Invalid Contract Address !!",1000,toast.POSITION.BOTTOM_CENTER,'toast-red');
       setAddressInput("");
       return;
      }
     window.open(window.location.origin + '/collection/'+ addressInput,'_self');
    }
 
+
+   const checkAddress = (address:any) => {
+    setAddressInput(address.trim());
+   }
 
 
   /** View */
@@ -184,7 +188,7 @@ const Collections: React.FC = () => {
                 {
                   isShowSearchBar ?
                    <div style={{width:"100%"}}>
-                    <input  value={addressInput} onChange={(e) => setAddressInput(e.target.value)}  type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
+                    <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)}  type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
                   <span className="material-icons center icon">
                      rocket
@@ -197,7 +201,7 @@ const Collections: React.FC = () => {
 
                 {
                  ( addressInput.length > 2 ) ? 
-                 <button onClick={() => getNewCollection()} className="btn btn-md btn-primary getCollectibles">
+                 <button onClick={() => getNewCollection()} className="btn btn-md btn-primary getCollectibles fetch">
                  <span className="material-icons icon">rocket</span> 
                  <span className='txt'>Get Collection</span>
                  </button> 

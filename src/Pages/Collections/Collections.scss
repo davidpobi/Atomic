@@ -136,7 +136,7 @@
 
 
       .fetch {
-        border: 5px solid rgb(50, 138, 50);
+        border: 5px solid teal;
       }
 
   }
@@ -463,6 +463,7 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
               background-color: white;
               color: rgb(146, 145, 145);
               border: 2px solid grey;
+              border-radius: 15px;
               width: 162px;
             
 
@@ -476,6 +477,10 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
                 position: relative;
                 top: -3px;
               }
+            }
+
+            .fetch {
+              border: 3px solid teal;
             }
  
 
