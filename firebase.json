@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "atomic-react",
+    "site": "atomic-x",
     "public": "build",
     "ignore": [
       "firebase.json",

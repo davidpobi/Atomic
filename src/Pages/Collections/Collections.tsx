@@ -147,6 +147,11 @@ const Collections: React.FC = () => {
 
 
    const getNewCollection = () => {
+     if(!validateEthereumAddress(addressInput || "")) {
+      presentToast_("invalidAddress-toast","Invalid Contract Address !!",1000,toast.POSITION.TOP_CENTER,'toast-red');
+      setAddressInput("");
+      return;
+     }
     window.open(window.location.origin + '/collection/'+ addressInput,'_self');
    }
 
