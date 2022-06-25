@@ -170,6 +170,7 @@
       left: 1%;
       border: 2px solid grey;
       margin-left: 0px;
+      margin-bottom: 0px;
 
 
       .preview {
@@ -182,9 +183,18 @@
       .name {
           position: relative;
           top: 5px;
-          font-size: 22px;
+          font-size: 19px;
           font-weight: 400px;
           color: rgb(109, 108, 108);
+          margin-bottom: 50px;
+          text-align: start;
+          width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
       }
     }
 
@@ -547,6 +557,13 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
             font-size: 22px;
             font-weight: 400px;
             color: rgb(109, 108, 108);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
         }
       }
       

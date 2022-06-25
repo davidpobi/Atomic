@@ -95,7 +95,7 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
             }
             return 0;
          });
-        //  console.log(JSON.stringify(response.data, null, 2))
+       //   console.log(JSON.stringify(response.data, null, 2))
       })
       .catch((error) =>  {
           console.log(error);

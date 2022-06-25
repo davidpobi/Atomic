@@ -53,6 +53,7 @@ const Collections: React.FC = () => {
        return;
      }
 
+    // console.log(data.contractMetadata);
      setIsContractReady(true);
      setContractData(data.contractMetadata);
   }
@@ -225,7 +226,7 @@ const Collections: React.FC = () => {
                             {
                               asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
                             }
-                          <label className='name center'>{asset.metadata.name}</label>
+                          <label className='name'>{asset.metadata.name}</label>
                           </div>
               
                         </li>
@@ -280,7 +281,7 @@ const Collections: React.FC = () => {
                     </li>
 
 
-                   <li hidden={contractData.totalSupply === undefined}>
+                   <li hidden={(contractData.totalSupply === undefined) || !hasNextPage}>
                         <button  className='actionBtn pager'>
                          {totalNftsCount} / {contractData.totalSupply}
                         </button>
