@@ -25,6 +25,21 @@ npm install
 ```
 
 
+## Setting Up API Keys
+Interacting with Web3 in your browser will require to have API Keys from [Moralis Web3](https://moralis.io/) & [Alchemy API](https://www.alchemy.com/). 
+Grab the respective keys to complete the steps below.
+
+create .env file in root folder
+
+Replace 'XXX-XXX' with respective keys
+
+```
+REACT_APP_MORALIS_SERVER_URL = "XXX-XXX"
+REACT_APP_MORALIS_API_KEY = "XXX-XXX"
+REACT_APP_ALCHEMY_API_KEY = "XXX-XXX"
+```
+
+
 
 ### `npm start`
 
