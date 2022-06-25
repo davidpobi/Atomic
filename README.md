@@ -29,7 +29,7 @@ npm install
 Interacting with Web3 in your browser will require to have API Keys from [Moralis Web3](https://moralis.io/) & [Alchemy API](https://www.alchemy.com/). 
 Grab the respective keys to complete the steps below.
 
-create .env file in root folder
+Create .env file in root folder
 
 Replace 'XXX-XXX' with respective keys
 
