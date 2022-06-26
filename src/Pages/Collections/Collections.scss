@@ -404,7 +404,245 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 1025px) {
  
+  .page-header {
+    position: relative;
+    top:2px;
+    width: 100%;
+    height: 7%;
 
+    .heading {
+        position: relative;
+        top:5px;
+        color: grey;
+        margin-left: 50px;
+    
+        .name {
+          font-size: 37px;
+          font-weight: 500;
+        }
+
+
+        .symbol {
+          position: relative;
+          top: -2px;
+          color: white;
+          margin-left: 30px;
+          font-size: 24px;
+          font-weight: 700;
+          background-color: gainsboro;
+      }
+
+      .token-type {
+        position: relative;
+        color: grey;
+        margin-left: 30px;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: white;
+        border: 2px solid grey;
+      }
+
+      .badge {
+        position: relative;
+  
+      }
+
+      .name_address {
+        text-decoration: underline;
+        font-weight: 400;
+        a {
+          text-decoration: none;
+          color: grey;
+        }
+      }
+    }
+
+
+    .getCollectibles {
+        position: absolute;
+        top:10px;
+        right: 20px;
+        background-color: white;
+        color: rgb(146, 145, 145);
+        border: 2px solid grey;
+        border-radius: 15px;
+        width: 162px;
+      
+
+        .icon {
+          position: relative;
+          top: 3px;
+          left: -4px;
+        }
+
+        .txt {
+          position: relative;
+          top: -3px;
+        }
+      }
+
+      .fetch {
+        border: 3px solid teal;
+      }
+
+
+      .address_input  {
+        position: absolute;
+        top:12px;
+        right: 220px;
+        width: 400px;
+        height: 40px;
+        border-radius: 15px;
+        border: 2px solid grey;
+        
+      }
+
+
+      .address_input::placeholder {
+        position: relative;
+        left: 25px;
+      }
+
+      .getBtn {
+        display: none;
+      }
+}
+
+
+.assets-list {
+  position: relative;
+  top: 10px;
+  width: 100%;
+  height: 90%;
+  //background-color: grey;
+  ul {
+      width: 100%;
+      height: 100%;
+      li {
+          margin-top: 20px;
+          margin-left: 20px;
+         // background-color: white;
+      }
+  }
+
+     
+
+.asset-card {
+  position: relative;
+  border-radius: 15px;
+  height: 450px;
+  width: 450px;
+  border: 2px solid grey;
+  margin-left: 30px;
+
+
+  .preview {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+  }
+
+  .name {
+      position: relative;
+      top: 5px;
+      font-size: 22px;
+      font-weight: 400px;
+      color: rgb(109, 108, 108);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+  }
+}
+
+}
+
+
+.actionsList {
+  position: absolute;
+  bottom: 10vh;
+  right: -7vh;
+  list-style-type: none;
+
+  li {
+    margin-bottom: 30px;
+  }
+
+
+
+  .actionBtn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid rgb(231, 231, 231);
+    background-color: white;
+
+    .icon {
+      color: rgb(54, 54, 54);
+    }
+
+    &:hover {
+      border: 2px solid rgb(231, 231, 231);
+
+      .icon {
+        color: blanchedalmond;
+      }
+  }
+    
+  }
+
+  .pager {
+    font-size: 11px;
+    border: 1px solid rgb(235, 235, 235);
+    &:hover {
+      border: 1px solid rgb(235, 235, 235);
+    }
+  }
+
+
+  .getCollectibles_mobile {
+    display: none;
+  }
+
+}
+
+
+.Toastify__toast {
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 15px;
+  font-size: 19px;
+  width: 280px;
+
+
+}
+
+.toast-red {
+  border-color: rgb(189, 127, 127);
+}
+
+.Toastify__toast-container--bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: -100px;
+}
+
+.invalidContract {
+  position: relative;
+  width: 100%;
+  height: 100%;
+ // background-color: gainsboro;
+  .msg {
+    position: relative;
+    top: 25%;
+    font-size: 42px;
+    color: grey;
+  }
+}
 }
 
 
