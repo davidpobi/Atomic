@@ -3,11 +3,11 @@ import "./Collections.scss";
 import { getContractMetadata, getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
 import { getCollection} from '../../Store/actions';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Collections: React.FC = () => {
-  const navigate = useNavigate();
+ 
   /** Contract Metadata */
   const [contractData, setContractData] = useState({name:"",symbol:"",tokenType:"",totalSupply: 0});
   const [isContractReady,setIsContractReady] = useState<boolean>(true);
@@ -189,7 +189,7 @@ const Collections: React.FC = () => {
                 {
                   isShowSearchBar ?
                    <div style={{width:"100%"}}>
-                    <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)}  type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
+                    <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
                   <span className="material-icons center icon">
                      rocket

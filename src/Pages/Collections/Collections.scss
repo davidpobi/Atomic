@@ -12,7 +12,6 @@
     top:2px;
     width: 100%;
     height: 7%;
-   // background-color: wheat;
 
     .heading {
         position: relative;
@@ -93,7 +92,7 @@
       .address_input {
         position: relative;
         top:10px;
-        left: 5%;
+        left: 10px;
         margin-right: 20px;
         margin-bottom: 5px;
         width: 80%;
@@ -148,7 +147,7 @@
       width: 96%;
       left: 2%;
       height: 90%;
-      //background-color: grey;
+
       ul {
           width: 100%;
           height: 100%;
@@ -156,7 +155,6 @@
               width: 100%;
               margin-top: 20px;
               margin-left: 0px;
-            // background-color: white;
           }
       }
 
@@ -204,7 +202,7 @@
     .actionsList {
       position: fixed;
       bottom: 10vh;
-      right: 0vh;
+      right: 5px;
       list-style-type: none;
 
       li {
@@ -229,7 +227,7 @@
           border: 2px solid rgb(231, 231, 231);
 
           .icon {
-            color: rgb(169, 223, 245);
+            color: rgb(219, 219, 219);
           }
       }
         
@@ -299,7 +297,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-    // background-color: gainsboro;
+
       .msg {
         position: relative;
         top: 25%;
@@ -321,7 +319,304 @@ and (min-device-width: 320px)
 and (max-device-height: 568px) 
 and (-webkit-min-device-pixel-ratio: 2) 
 and (orientation: portrait) {
+  .page-header {
+    position: relative;
+    top:2px;
+    width: 100%;
+    height: 7%;
 
+    .heading {
+        position: relative;
+        top:5px;
+        color: grey;
+        margin-left: 10px;
+    
+        .name {
+          font-size: 22px;
+          font-weight: 500;
+        }
+
+
+        .symbol {
+          position: relative;
+          top: -2px;
+          color: white;
+          margin-left: 10px;
+          font-size: 12px;
+          font-weight: 700;
+          background-color: gainsboro;
+        }
+
+      .token-type {
+        position: relative;
+        top: -2px;
+        color: grey;
+        margin-left: 10px;
+        font-size: 9px;
+        font-weight: 400;
+        background-color: white;
+        border: 2px solid grey;
+      }
+
+      .badge {
+        position: relative;
+      }
+
+
+      .name_address {
+     
+        text-decoration: underline;
+        font-weight: 400;
+        a {
+          text-decoration: none;
+          color: grey;
+        }
+      }
+    }
+
+
+    .getCollectibles {
+      display: none;
+        position: absolute;
+        top:10px;
+        right: 20px;
+        background-color: white;
+        color: rgb(146, 145, 145);
+        border: 2px solid grey;
+        width: 162px;
+      
+
+        .icon {
+          position: relative;
+          top: 3px;
+          left: -4px;
+        }
+
+        .txt {
+          position: relative;
+          top: -3px;
+        }
+      }
+
+   
+
+
+      .address_input {
+        position: relative;
+        top:10px;
+        left: 10px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+        width: 80%;
+        height: 40px;
+        border-radius: 15px;
+        border: 2px solid grey;
+        padding: 0px;
+      }
+
+      .address_input::placeholder {
+        position: relative;
+        left: 5px;
+        font-size: 13px;
+      }
+
+      .getBtn {
+        position: relative;
+        top:10px;
+        left: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid rgb(231, 231, 231);
+        background-color: white;
+        opacity: 0.7;
+
+        .icon {
+          color: rgb(80, 80, 80);
+          font-size: 18px;
+        }
+
+        &:hover {
+          border: 2px solid rgb(231, 231, 231);
+
+          .icon {
+            color: rgb(2, 2, 2);
+          }
+        }
+      }
+
+
+      .fetch {
+        border: 5px solid teal;
+      }
+
+  }
+
+
+    .assets-list {
+      position: relative;
+      top: 10px;
+      width: 96%;
+      left: 2%;
+      height: 90%;
+
+      ul {
+          width: 100%;
+          height: 100%;
+          li {
+              width: 100%;
+              margin-top: 20px;
+              margin-left: 0px;
+          }
+      }
+
+        
+
+    .asset-card {
+      position: relative;
+      border-radius: 15px;
+      height: 430px;
+      width: 98%;
+      left: 1%;
+      border: 2px solid grey;
+      margin-left: 0px;
+      margin-bottom: 0px;
+
+
+      .preview {
+          object-fit: scale-down;
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+      }
+
+      .name {
+          position: relative;
+          top: 5px;
+          font-size: 19px;
+          font-weight: 400px;
+          color: rgb(109, 108, 108);
+          margin-bottom: 50px;
+          text-align: start;
+          width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+    }
+
+    }
+
+
+    .actionsList {
+      position: fixed;
+      bottom: 10vh;
+      right: 5px;
+      list-style-type: none;
+
+      li {
+        margin-bottom: 30px;
+      }
+
+
+      .actionBtn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid rgb(231, 231, 231);
+        background-color: white;
+        opacity: 0.7;
+
+        .icon {
+          color: rgb(54, 54, 54);
+          font-size: 18px;
+        }
+
+        &:hover {
+          border: 2px solid rgb(231, 231, 231);
+
+          .icon {
+            color: rgb(219, 219, 219);
+          }
+      }
+        
+      }
+
+
+
+      .pager {
+        font-size: 8px;
+        border: 1px solid white;
+        color: grey;
+        &:hover {
+          border: 1px solid white;
+        }
+      }
+
+
+      .getCollectibles_mobile{
+        position: relative;
+        top: -20px;
+        border: 5px solid rgb(231, 231, 231);
+      }
+
+    }
+
+
+    .Toastify__toast {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      border: 2px solid grey;
+      border-radius: 15px;
+      font-size: 18px;
+      opacity: 0.7;
+    }
+
+    .Toastify__toast-body {
+      opacity: 0.7;
+    }
+    
+
+    .toast-red {
+      position: absolute;
+      bottom: 20px;
+      right: 40px;
+      border-color: rgb(189, 127, 127);
+      width: 280px;
+    }
+    
+
+    .Toastify__toast-container--bottom-right {
+      position: absolute;
+      bottom: 10px;
+      right: 00px;
+    }
+
+    .Toastify__toast-container--bottom-center {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+
+    .invalidContract {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .msg {
+        position: relative;
+        top: 25%;
+        font-size: 18px;
+        color: grey;
+      }
+    } 
 }
 
 
@@ -343,17 +638,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
 @media only screen 
 and (min-width: 590px) 
 and (-webkit-min-device-pixel-ratio: 2) {
+  
 }
 
 
-
-//Ipad Air
-// Medium devices (tablets, less than 992px)
-@media only screen 
-and (min-width: 575px) 
-and (-webkit-min-device-pixel-ratio: 2) {
-
-}
 
 
 
@@ -377,6 +665,242 @@ and (min-width: 1024px)
 and  (max-device-width: 1024px)
 and (max-height: 1366px) 
 and (-webkit-min-device-pixel-ratio: 1.5) {
+  .page-header {
+    position: relative;
+    width: 100%;
+    height: 7%;
+
+    .heading {
+        position: relative;
+        top:5px;
+        color: grey;
+        margin-left: 40px;
+    
+        .name {
+          font-size: 37px;
+          font-weight: 500;
+        }
+
+
+        .symbol {
+          position: relative;
+          top: -2px;
+          color: white;
+          margin-left: 30px;
+          font-size: 24px;
+          font-weight: 700;
+          background-color: gainsboro;
+      }
+
+      .token-type {
+        position: relative;
+        color: grey;
+        margin-left: 30px;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: white;
+        border: 2px solid grey;
+      }
+
+      .badge {
+        position: relative;
+  
+      }
+
+      .name_address {
+        text-decoration: underline;
+        font-weight: 400;
+        a {
+          text-decoration: none;
+          color: grey;
+        }
+      }
+    }
+
+
+    .getCollectibles {
+        position: absolute;
+        top:10px;
+        right: 20px;
+        background-color: white;
+        color: rgb(146, 145, 145);
+        border: 2px solid grey;
+        border-radius: 15px;
+        width: 162px;
+      
+
+        .icon {
+          position: relative;
+          top: 3px;
+          left: -4px;
+        }
+
+        .txt {
+          position: relative;
+          top: -3px;
+        }
+      }
+
+      .fetch {
+        border: 3px solid teal;
+      }
+
+
+      .address_input  {
+        position: absolute;
+        top:12px;
+        right: 200px;
+        width: 200px;
+        height: 40px;
+        border-radius: 15px;
+        border: 2px solid grey;
+        
+      }
+
+
+      .address_input::placeholder {
+        position: relative;
+        left: 25px;
+      }
+
+      .getBtn {
+        display: none;
+      }
+}
+
+
+.assets-list {
+  position: relative;
+  top: 10px;
+  width: 100%;
+  height: 90%;
+
+  ul {
+      width: 100%;
+      height: 100%;
+      li {
+          margin-top: 20px;
+          margin-left: 20px;
+      }
+  }
+
+    
+
+.asset-card {
+  position: relative;
+  border-radius: 15px;
+  height: 450px;
+  width: 450px;
+  border: 2px solid grey;
+  margin-left: 15px;
+
+
+  .preview {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+  }
+
+  .name {
+      position: relative;
+      top: 5px;
+      font-size: 22px;
+      font-weight: 400px;
+      color: rgb(109, 108, 108);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+  }
+}
+
+}
+
+
+.actionsList {
+  position: fixed;
+  bottom: 10vh;
+  right: 1vh;
+  list-style-type: none;
+
+  li {
+    margin-bottom: 30px;
+  }
+
+
+
+  .actionBtn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid rgb(231, 231, 231);
+    background-color: white;
+
+    .icon {
+      color: rgb(54, 54, 54);
+    }
+
+    &:hover {
+      border: 2px solid rgb(231, 231, 231);
+
+      .icon {
+        color: rgb(219, 219, 219);
+      }
+  }
+    
+  }
+
+  .pager {
+    font-size: 11px;
+    border: 1px solid rgb(235, 235, 235);
+    &:hover {
+      border: 1px solid rgb(235, 235, 235);
+    }
+  }
+
+
+  .getCollectibles_mobile {
+    display: none;
+  }
+
+}
+
+
+.Toastify__toast {
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 15px;
+  font-size: 19px;
+  width: 280px;
+
+
+}
+
+.toast-red {
+  border-color: rgb(189, 127, 127);
+}
+
+.Toastify__toast-container--bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: -100px;
+}
+
+.invalidContract {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .msg {
+    position: relative;
+    top: 25%;
+    font-size: 42px;
+    color: grey;
+  }
+}
 
 
 }
@@ -384,9 +908,246 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
 
 
-/* Mini Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 800px){
 
+
+/* Mini Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 800px) and (max-width: 966px){
+    .page-header {
+      position: relative;
+      width: 100%;
+      height: 7%;
+
+      .heading {
+          position: relative;
+          top:5px;
+          color: grey;
+          margin-left: 40px;
+      
+          .name {
+            font-size: 37px;
+            font-weight: 500;
+          }
+
+
+          .symbol {
+            position: relative;
+            top: -2px;
+            color: white;
+            margin-left: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            background-color: gainsboro;
+        }
+
+        .token-type {
+          position: relative;
+          color: grey;
+          margin-left: 30px;
+          font-size: 16px;
+          font-weight: 400;
+          background-color: white;
+          border: 2px solid grey;
+        }
+
+        .badge {
+          position: relative;
+    
+        }
+
+        .name_address {
+          text-decoration: underline;
+          font-weight: 400;
+          a {
+            text-decoration: none;
+            color: grey;
+          }
+        }
+      }
+
+
+      .getCollectibles {
+          position: absolute;
+          top:10px;
+          right: 20px;
+          background-color: white;
+          color: rgb(146, 145, 145);
+          border: 2px solid grey;
+          border-radius: 15px;
+          width: 162px;
+        
+
+          .icon {
+            position: relative;
+            top: 3px;
+            left: -4px;
+          }
+
+          .txt {
+            position: relative;
+            top: -3px;
+          }
+        }
+
+        .fetch {
+          border: 3px solid teal;
+        }
+
+
+        .address_input  {
+          position: absolute;
+          top:12px;
+          right: 200px;
+          width: 200px;
+          height: 40px;
+          border-radius: 15px;
+          border: 2px solid grey;
+          
+        }
+
+
+        .address_input::placeholder {
+          position: relative;
+          left: 25px;
+        }
+
+        .getBtn {
+          display: none;
+        }
+  }
+
+
+  .assets-list {
+    position: relative;
+    top: 10px;
+    width: 100%;
+    height: 90%;
+
+    ul {
+        width: 100%;
+        height: 100%;
+        li {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    }
+
+      
+
+  .asset-card {
+    position: relative;
+    border-radius: 15px;
+    height: 450px;
+    width: 450px;
+    border: 2px solid grey;
+    margin-left: 15px;
+
+
+    .preview {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+    }
+
+    .name {
+        position: relative;
+        top: 5px;
+        font-size: 22px;
+        font-weight: 400px;
+        color: rgb(109, 108, 108);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+  }
+
+  }
+
+
+  .actionsList {
+    position: fixed;
+    bottom: 10vh;
+    right: 1vh;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 30px;
+    }
+
+
+
+    .actionBtn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 3px solid rgb(231, 231, 231);
+      background-color: white;
+
+      .icon {
+        color: rgb(54, 54, 54);
+      }
+
+      &:hover {
+        border: 2px solid rgb(231, 231, 231);
+
+        .icon {
+          color: rgb(219, 219, 219);
+        }
+    }
+      
+    }
+
+    .pager {
+      font-size: 11px;
+      border: 1px solid rgb(235, 235, 235);
+      &:hover {
+        border: 1px solid rgb(235, 235, 235);
+      }
+    }
+
+
+    .getCollectibles_mobile {
+     // display: none;
+    }
+
+  }
+
+
+  .Toastify__toast {
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 15px;
+    font-size: 19px;
+    width: 280px;
+
+
+  }
+
+  .toast-red {
+    border-color: rgb(189, 127, 127);
+  }
+
+  .Toastify__toast-container--bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: -100px;
+  }
+
+  .invalidContract {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .msg {
+      position: relative;
+      top: 25%;
+      font-size: 42px;
+      color: grey;
+    }
+  }
 
 }
 
@@ -395,10 +1156,500 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
 /* Mini 2 Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 1366px) {
+  .page-header {
+    position: relative;
+    top:2px;
+    width: 100%;
+    height: 7%;
+
+    .heading {
+        position: relative;
+        top:5px;
+        color: grey;
+        margin-left: 50px;
+    
+        .name {
+          font-size: 37px;
+          font-weight: 500;
+        }
+
+
+        .symbol {
+          position: relative;
+          top: -2px;
+          color: white;
+          margin-left: 30px;
+          font-size: 24px;
+          font-weight: 700;
+          background-color: gainsboro;
+      }
+
+      .token-type {
+        position: relative;
+        color: grey;
+        margin-left: 30px;
+        font-size: 16px;
+        font-weight: 400;
+        background-color: white;
+        border: 2px solid grey;
+      }
+
+      .badge {
+        position: relative;
+  
+      }
+
+      .name_address {
+        text-decoration: underline;
+        font-weight: 400;
+        a {
+          text-decoration: none;
+          color: grey;
+        }
+      }
+    }
+
+
+    .getCollectibles {
+        position: absolute;
+        top:10px;
+        right: 20px;
+        background-color: white;
+        color: rgb(146, 145, 145);
+        border: 2px solid grey;
+        border-radius: 15px;
+        width: 162px;
+      
+
+        .icon {
+          position: relative;
+          top: 3px;
+          left: -4px;
+        }
+
+        .txt {
+          position: relative;
+          top: -3px;
+        }
+      }
+
+      .fetch {
+        border: 3px solid teal;
+      }
+
+
+      .address_input  {
+        position: absolute;
+        top:12px;
+        right: 220px;
+        width: 400px;
+        height: 40px;
+        border-radius: 15px;
+        border: 2px solid grey;
+        
+      }
+
+
+      .address_input::placeholder {
+        position: relative;
+        left: 25px;
+      }
+
+      .getBtn {
+        display: none;
+      }
+}
+
+
+.assets-list {
+  position: relative;
+  top: 10px;
+  width: 100%;
+  height: 90%;
+
+  ul {
+      width: 100%;
+      height: 100%;
+      li {
+          margin-top: 20px;
+          margin-left: 20px;
+      }
+  }
+
+     
+
+.asset-card {
+  position: relative;
+  border-radius: 15px;
+  height: 450px;
+  width: 450px;
+  border: 2px solid grey;
+  margin-left: 30px;
+
+
+  .preview {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+  }
+
+  .name {
+      position: relative;
+      top: 5px;
+      font-size: 22px;
+      font-weight: 400px;
+      color: rgb(109, 108, 108);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+  }
+}
+
+}
+
+
+.actionsList {
+  position: fixed;
+  bottom: 10vh;
+  right: 2vh;
+  list-style-type: none;
+
+  li {
+    margin-bottom: 30px;
+  }
+
+
+
+  .actionBtn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 3px solid rgb(231, 231, 231);
+    background-color: white;
+
+    .icon {
+      color: rgb(54, 54, 54);
+    }
+
+    &:hover {
+      border: 2px solid rgb(231, 231, 231);
+
+      .icon {
+        color: rgb(219, 219, 219);
+      }
+  }
+    
+  }
+
+  .pager {
+    font-size: 11px;
+    border: 1px solid rgb(235, 235, 235);
+    &:hover {
+      border: 1px solid rgb(235, 235, 235);
+    }
+  }
+
+
+  .getCollectibles_mobile {
+    display: none;
+  }
+
+}
+
+
+.Toastify__toast {
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 15px;
+  font-size: 19px;
+  width: 280px;
 
 
 }
 
+.toast-red {
+  border-color: rgb(189, 127, 127);
+}
+
+.Toastify__toast-container--bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: -100px;
+}
+
+.invalidContract {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .msg {
+    position: relative;
+    top: 25%;
+    font-size: 42px;
+    color: grey;
+  }
+}
+
+}
+
+
+
+
+//Ipad Air
+// Medium devices (tablets, less than 992px)
+@media only screen 
+and (min-width: 575px) and (max-width: 975px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+    .page-header {
+      position: relative;
+      width: 100%;
+      height: 7%;
+
+      .heading {
+          position: relative;
+          top:5px;
+          color: grey;
+          margin-left: 30px;
+      
+          .name {
+            font-size: 37px;
+            font-weight: 500;
+          }
+
+
+          .symbol {
+            position: relative;
+            top: -2px;
+            color: white;
+            margin-left: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            background-color: gainsboro;
+        }
+
+        .token-type {
+          position: relative;
+          color: grey;
+          margin-left: 30px;
+          font-size: 16px;
+          font-weight: 400;
+          background-color: white;
+          border: 2px solid grey;
+        }
+
+        .badge {
+          position: relative;
+    
+        }
+
+        .name_address {
+          text-decoration: underline;
+          font-weight: 400;
+          a {
+            text-decoration: none;
+            color: grey;
+          }
+        }
+      }
+
+
+      .getCollectibles {
+         display: none;
+        position: absolute;
+        top:10px;
+        right: 40px;
+        background-color: white;
+        color: rgb(146, 145, 145);
+        border: 2px solid grey;
+        border-radius: 15px;
+        width: 162px;
+        font-size: 16px;
+
+        .icon {
+          position: relative;
+          top: 3px;
+          left: -4px;
+        }
+
+        .txt {
+          position: relative;
+          top: -3px;
+        }
+        }
+
+        .fetch {
+          border: 3px solid teal;
+        }
+
+
+        .address_input {
+          position: relative;
+          top:10px;
+          left: 30px;
+          margin-right: 20px;
+          margin-bottom: 5px;
+          width: 90%;
+          height: 40px;
+          border-radius: 15px;
+          border: 2px solid grey;
+          padding: 0px;
+        }
+
+
+
+        .address_input::placeholder {
+          position: relative;
+          left: 25px;
+        }
+
+        .getBtn {
+          display: none;
+        }
+  }
+
+
+  .assets-list {
+    position: relative;
+    top: 10px;
+    width: 100%;
+    height: 90%;
+
+    ul {
+        width: 100%;
+        height: 100%;
+        li {
+            width: 45%;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    }
+
+      
+
+  .asset-card {
+    position: relative;
+    border-radius: 15px;
+    height: 350px;
+    width: 350px;
+    border: 2px solid grey;
+    margin-left: 5px;
+
+
+    .preview {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+    }
+
+    .name {
+        position: relative;
+        top: 5px;
+        font-size: 22px;
+        font-weight: 400px;
+        color: rgb(109, 108, 108);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+  }
+
+  }
+
+
+  .actionsList {
+    position: fixed;
+    bottom: 10vh;
+    right: 1vh;
+    list-style-type: none;
+
+    li {
+      margin-bottom: 30px;
+    }
+
+
+
+    .actionBtn {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 3px solid rgb(231, 231, 231);
+      background-color: white;
+
+      .icon {
+        color: rgb(54, 54, 54);
+      }
+
+      &:hover {
+        border: 2px solid rgb(231, 231, 231);
+
+        .icon {
+          color: rgb(219, 219, 219);
+        }
+    }
+      
+    }
+
+    .pager {
+      font-size: 11px;
+      border: 1px solid rgb(235, 235, 235);
+      &:hover {
+        border: 1px solid rgb(235, 235, 235);
+      }
+    }
+
+
+    // .getCollectibles_mobile{
+    //   position: relative;
+    //   top: -20px;
+    //   border: 5px solid rgb(231, 231, 231);
+    // }
+
+
+  }
+
+
+  .Toastify__toast {
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 15px;
+    font-size: 19px;
+    width: 280px;
+
+
+  }
+
+  .toast-red {
+    border-color: rgb(189, 127, 127);
+  }
+
+  .Toastify__toast-container--bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: -100px;
+  }
+
+  .invalidContract {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .msg {
+      position: relative;
+      top: 25%;
+      font-size: 42px;
+      color: grey;
+    }
+  }
+
+}
 
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -514,14 +1765,13 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
   top: 10px;
   width: 100%;
   height: 90%;
-  //background-color: grey;
+
   ul {
       width: 100%;
       height: 100%;
       li {
           margin-top: 20px;
           margin-left: 20px;
-         // background-color: white;
       }
   }
 
@@ -563,9 +1813,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
 
 .actionsList {
-  position: absolute;
+  position: fixed;
   bottom: 10vh;
-  right: -7vh;
+  right: 2vh;
   list-style-type: none;
 
   li {
@@ -589,7 +1839,7 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
       border: 2px solid rgb(231, 231, 231);
 
       .icon {
-        color: blanchedalmond;
+        color: rgb(219, 219, 219);
       }
   }
     
@@ -635,7 +1885,6 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
   position: relative;
   width: 100%;
   height: 100%;
- // background-color: gainsboro;
   .msg {
     position: relative;
     top: 25%;
@@ -809,9 +2058,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
    
       
       .actionsList {
-        position: absolute;
+        position: fixed;
         bottom: 10vh;
-        right: -7vh;
+        right: 2vh;
         list-style-type: none;
 
         li {
@@ -835,7 +2084,7 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
             border: 2px solid rgb(231, 231, 231);
 
             .icon {
-              color: blanchedalmond;
+              color: rgb(219, 219, 219);
             }
         }
           
