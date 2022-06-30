@@ -21,7 +21,9 @@
     
         .name {
           font-size: 22px;
-          font-weight: 500;
+          font-weight: 900;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: 0px;
         }
 
 
@@ -182,7 +184,9 @@
           position: relative;
           top: 5px;
           font-size: 19px;
-          font-weight: 400px;
+          font-weight: 400;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -0.5px;
           color: rgb(109, 108, 108);
           margin-bottom: 50px;
           text-align: start;
@@ -237,6 +241,8 @@
 
       .pager {
         font-size: 8px;
+        font-weight: 500;
+        font-family: 'Kantumruy Pro';
         border: 1px solid white;
         color: grey;
         &:hover {
@@ -333,7 +339,9 @@ and (orientation: portrait) {
     
         .name {
           font-size: 22px;
-          font-weight: 500;
+          font-weight: 900;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: 0px;
         }
 
 
@@ -494,7 +502,9 @@ and (orientation: portrait) {
           position: relative;
           top: 5px;
           font-size: 19px;
-          font-weight: 400px;
+          font-weight: 400;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -0.5px;
           color: rgb(109, 108, 108);
           margin-bottom: 50px;
           text-align: start;
@@ -549,6 +559,8 @@ and (orientation: portrait) {
 
       .pager {
         font-size: 8px;
+        font-weight: 500;
+        font-family: 'Kantumruy Pro';
         border: 1px solid white;
         color: grey;
         &:hover {
@@ -678,7 +690,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
     
         .name {
           font-size: 37px;
-          font-weight: 500;
+          font-weight: 900;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: 0px;
         }
 
 
@@ -738,6 +752,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         .txt {
           position: relative;
           top: -3px;
+          font-weight: 500;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -1px;
         }
       }
 
@@ -806,7 +823,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
       position: relative;
       top: 5px;
       font-size: 22px;
-      font-weight: 400px;
+      font-weight: 400;
+      font-family: 'Kantumruy Pro';
+      letter-spacing: -0.5px;
       color: rgb(109, 108, 108);
       display: flex;
       align-items: center;
@@ -856,6 +875,8 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
   .pager {
     font-size: 11px;
+    font-weight: 500;
+    font-family: 'Kantumruy Pro';
     border: 1px solid rgb(235, 235, 235);
     &:hover {
       border: 1px solid rgb(235, 235, 235);
@@ -925,7 +946,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
       
           .name {
             font-size: 37px;
-            font-weight: 500;
+            font-weight: 900;
+            font-family: 'Kantumruy Pro';
+            letter-spacing: 0px;
           }
 
 
@@ -985,6 +1008,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
           .txt {
             position: relative;
             top: -3px;
+            font-weight: 500;
+            font-family: 'Kantumruy Pro';
+            letter-spacing: -1px;
           }
         }
 
@@ -1053,7 +1079,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         position: relative;
         top: 5px;
         font-size: 22px;
-        font-weight: 400px;
+        font-weight: 400;
+        font-family: 'Kantumruy Pro';
+        letter-spacing: -0.5px;
         color: rgb(109, 108, 108);
         display: flex;
         align-items: center;
@@ -1103,6 +1131,8 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
     .pager {
       font-size: 11px;
+      font-weight: 500;
+      font-family: 'Kantumruy Pro';
       border: 1px solid rgb(235, 235, 235);
       &:hover {
         border: 1px solid rgb(235, 235, 235);
@@ -1170,7 +1200,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
     
         .name {
           font-size: 37px;
-          font-weight: 500;
+          font-weight: 900;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: 0px;
         }
 
 
@@ -1230,6 +1262,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         .txt {
           position: relative;
           top: -3px;
+          font-weight: 500;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -1px;
         }
       }
 
@@ -1298,7 +1333,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
       position: relative;
       top: 5px;
       font-size: 22px;
-      font-weight: 400px;
+      font-weight: 400;
+      font-family: 'Kantumruy Pro';
+      letter-spacing: -0.5px;
       color: rgb(109, 108, 108);
       display: flex;
       align-items: center;
@@ -1348,6 +1385,8 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 
   .pager {
     font-size: 11px;
+    font-weight: 500;
+    font-family: 'Kantumruy Pro';
     border: 1px solid rgb(235, 235, 235);
     &:hover {
       border: 1px solid rgb(235, 235, 235);
@@ -1417,7 +1456,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
       
           .name {
             font-size: 37px;
-            font-weight: 500;
+            font-weight: 900;
+            font-family: 'Kantumruy Pro';
+            letter-spacing: 0px;
           }
 
 
@@ -1550,7 +1591,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         position: relative;
         top: 5px;
         font-size: 22px;
-        font-weight: 400px;
+        font-weight: 400;
+        font-family: 'Kantumruy Pro';
+        letter-spacing: -0.5px;
         color: rgb(109, 108, 108);
         display: flex;
         align-items: center;
@@ -1600,6 +1643,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
     .pager {
       font-size: 11px;
+      font-weight: 500;
+      font-family: 'Kantumruy Pro';
       border: 1px solid rgb(235, 235, 235);
       &:hover {
         border: 1px solid rgb(235, 235, 235);
@@ -1669,7 +1714,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
     
         .name {
           font-size: 37px;
-          font-weight: 500;
+          font-weight: 900;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: 0px;
         }
 
 
@@ -1729,6 +1776,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
         .txt {
           position: relative;
           top: -3px;
+          font-weight: 500;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -1px;
         }
       }
 
@@ -1797,7 +1847,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
       position: relative;
       top: 5px;
       font-size: 22px;
-      font-weight: 400px;
+      font-weight: 400;
+      font-family: 'Kantumruy Pro';
+      letter-spacing: -0.5px;
       color: rgb(109, 108, 108);
       display: flex;
       align-items: center;
@@ -1847,6 +1899,8 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
   .pager {
     font-size: 11px;
+    font-weight: 500;
+    font-family: 'Kantumruy Pro';
     border: 1px solid rgb(235, 235, 235);
     &:hover {
       border: 1px solid rgb(235, 235, 235);
@@ -1913,7 +1967,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
           
               .name {
                 font-size: 42px;
-                font-weight: 500;
+                font-weight: 900;
+                font-family: 'Kantumruy Pro';
+                letter-spacing: 0px;
               }
 
 
@@ -1973,6 +2029,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
               .txt {
                 position: relative;
                 top: -3px;
+                font-weight: 500;
+                font-family: 'Kantumruy Pro';
+                letter-spacing: -1px;
               }
             }
 
@@ -2042,7 +2101,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
             position: relative;
             top: 5px;
             font-size: 22px;
-            font-weight: 400px;
+            font-weight: 400;
+            font-family: 'Kantumruy Pro';
+            letter-spacing: -0.5px;
             color: rgb(109, 108, 108);
             display: flex;
             align-items: center;
@@ -2092,6 +2153,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
         .pager {
           font-size: 11px;
+          font-weight: 500;
+          font-family: 'Kantumruy Pro';
+          letter-spacing: -1px;
           border: 1px solid rgb(235, 235, 235);
           &:hover {
             border: 1px solid rgb(235, 235, 235);
