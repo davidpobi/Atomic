@@ -9,9 +9,17 @@ export interface IMoralis {
 }
 
 
-export type ProtectedRouteProps = {
+export interface ProtectedRouteProps  {
     isAuthenticated?: boolean;
     authenticationPath: string;
     outlet: JSX.Element;
-  };
+};
+
+
+export interface IContract {
+    name:string;
+    symbol:string;
+    tokenType:string;
+    totalSupply: number;
+}
   
