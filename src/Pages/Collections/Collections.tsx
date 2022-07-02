@@ -218,13 +218,13 @@ const Collections: React.FC = () => {
                 <div  className='assets-list'>
                   <ul className='list-inline'>
                     {
-                    collection.map((asset) => {
+                    collection.map((asset,index:number) => {
 
                         return  (
-                        <li className="list-inline-item center" key={asset.id.tokenId}>
+                        <li className={`list-inline-item center ${(index === collection.length - 1)?"last-item":""}`} key={asset.id.tokenId}>
                           <div className="asset-card">
                             {
-                              asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview"/> :   <img src={asset.media[0].gateway} className="preview"/>
+                              asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview" alt='..'/> :   <img src={asset.media[0].gateway} className="preview" alt='..'/>
                             }
                           <label className='name'>{asset.metadata.name}</label>
                           </div>

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -51,8 +50,6 @@ export const getUserOwnedAssets_Alchemy = async(chain: string, ethAddress: strin
 
              return 0;
          });
-        // console.log(JSON.stringify(response.data, null, 2))
-        console.log(response.data);
       })
       .catch((error) =>  {
           console.log(error);
@@ -95,7 +92,7 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
             }
             return 0;
          });
-        //  console.log(JSON.stringify(response.data, null, 2))
+        
       })
       .catch((error) =>  {
           console.log(error);

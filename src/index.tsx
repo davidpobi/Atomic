@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import store from './Store/store';
 import './styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import { ProtectedRouteProps } from './Models/interfaces';
 import { AuthGuard } from './Services/AuthGuard';
 import Collections from './Pages/Collections/Collections';
@@ -16,20 +17,15 @@ import React from 'react';
 
 
 
-
-
 const defaultProtectedRouteProps: Omit<ProtectedRouteProps, "outlet"> = {
   authenticationPath: "/",
 };
-
  
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-
-
 
 
 root.render(
