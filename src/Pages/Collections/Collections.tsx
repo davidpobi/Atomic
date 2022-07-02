@@ -50,7 +50,7 @@ const Collections: React.FC = () => {
        return;
      }
 
-    // console.log(data.contractMetadata);
+     console.log(data.contractMetadata);
      setIsContractReady(true);
      setContractData(data.contractMetadata);
   }
@@ -170,7 +170,10 @@ const Collections: React.FC = () => {
               <div  className='page-header'>
                 <h1 className='heading'>
                   {
-                    contractData.name? <span className='name'>{contractData.name}</span> : <span className='name_address' hidden={collection.length == 0}><a  href={"https://etherscan.io/address/" + contractId } target="_blank"  rel="noreferrer" >{contractId?.slice(0,12)}
+                    contractData.name? 
+                    <span className='name'> {contractData.name.length>25 ? contractData.name.slice(0,25)  + '...' : contractData.name}</span> 
+                    : 
+                    <span className='name_address' hidden={collection.length === 0}><a  href={"https://etherscan.io/address/" + contractId } target="_blank"  rel="noreferrer" >{contractId?.slice(0,12)}
                     <span className="material-icons">open_in_new</span></a>
                     </span> 
                   }
@@ -239,22 +242,7 @@ const Collections: React.FC = () => {
 
                 <ul  className='actionsList'>
                   <li>
-
-                    {/* {
-                     ( addressInput.length > 2 ) ? 
-                     <button onClick={() => getNewCollection()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
-                     <span className="material-icons icon center">
-                        rocket
-                         </span> 
-                     </button>
-                     :
                      <button onClick={() => toggleSearchBar()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
-                     <span className="material-icons icon center">
-                        loop
-                         </span> 
-                     </button>
-                    } */}
-                         <button onClick={() => toggleSearchBar()}  disabled={!isContractReady} className='actionBtn getCollectibles_mobile'>
                           <span className="material-icons icon center">
                         loop
                          </span> 

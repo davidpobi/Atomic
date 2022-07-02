@@ -45,9 +45,6 @@ root.render(
       <Route path="assets" element={ <AuthGuard {...defaultProtectedRouteProps} outlet={<Collectibles />}/>} />
       <Route path="*" element={<NoMatch />} />
       </Route>
-
-      
-    
     </Routes>
     </MoralisProvider>
     </BrowserRouter>
