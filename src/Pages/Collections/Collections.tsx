@@ -282,7 +282,18 @@ const Collections: React.FC = () => {
          {
            !isContractReady && (
             <div  className="invalidContract">
-            <label className='msg center'>Invalid Contract Address. Check Again</label>
+            <label className='msg center'>Invalid Contract Address. Try Again</label><br/>
+            <label className='msg center'>
+          
+                   <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b" className="newAddressInput"/> 
+
+                  <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`loadAgainBtn ${addressInput.length > 5 ? "fetch":""}`}>
+                  <span className="material-icons center icon">
+                     rocket
+                      </span> 
+                  </button> 
+               
+            </label>
           </div>
           
            )
