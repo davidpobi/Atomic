@@ -1040,9 +1040,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 }
 
 .Toastify__toast-container--bottom-right {
-  position: absolute;
-  bottom: 20px;
-  right: -100px;
+  position: fixed;
+  bottom: 2vh;
+  right: 1vw;
 }
 
 .invalidContract {
@@ -1225,7 +1225,28 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
         }
 
         .getBtn {
-          display: none;
+         position: relative;
+         top:10px;
+         left: 5px;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         border: 3px solid rgb(231, 231, 231);
+         background-color: white;
+         opacity: 0.7;
+ 
+         .icon {
+           color: rgb(80, 80, 80);
+           font-size: 18px;
+         }
+ 
+         &:hover {
+           border: 2px solid rgb(231, 231, 231);
+ 
+           .icon {
+             color: rgb(2, 2, 2);
+           }
+         }
         }
   }
 
@@ -1351,9 +1372,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
   }
 
   .Toastify__toast-container--bottom-right {
-    position: absolute;
-    bottom: 20px;
-    right: -100px;
+    position: fixed;
+    bottom: 2vh;
+    right: 1vw;
   }
 
   .invalidContract {
@@ -1660,9 +1681,9 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
 }
 
 .Toastify__toast-container--bottom-right {
-  position: absolute;
-  bottom: 20px;
-  right: -100px;
+  position: fixed;
+  bottom: 2vh;
+  right: 1vw;
 }
 
 .invalidContract {
@@ -1831,7 +1852,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
           left: 30px;
           margin-right: 20px;
           margin-bottom: 5px;
-          width: 90%;
+          width: 85%;
           height: 40px;
           border-radius: 15px;
           border: 2px solid grey;
@@ -1846,7 +1867,32 @@ and (-webkit-min-device-pixel-ratio: 2) {
         }
 
         .getBtn {
-          display: none;
+         position: relative;
+         top:10px;
+         left: 25px;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+         border: 3px solid rgb(231, 231, 231);
+         background-color: white;
+         opacity: 0.7;
+ 
+         .icon {
+           color: rgb(80, 80, 80);
+           font-size: 18px;
+         }
+ 
+         &:hover {
+           border: 2px solid rgb(231, 231, 231);
+ 
+           .icon {
+             color: rgb(2, 2, 2);
+           }
+         }
+        }
+
+        .fetch {
+          border: 5px solid teal;
         }
   }
 
@@ -1976,9 +2022,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
   }
 
   .Toastify__toast-container--bottom-right {
-    position: absolute;
-    bottom: 20px;
-    right: -100px;
+    position: fixed;
+    bottom: 2vh;
+    right: 1vw;
   }
 
   .invalidContract {
@@ -2284,9 +2330,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 .Toastify__toast-container--bottom-right {
-  position: absolute;
-  bottom: 20px;
-  right: -100px;
+  position: fixed;
+  bottom: 2vh;
+  right: 1vw;
 }
 
 .invalidContract {
@@ -2543,9 +2589,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
       }
 
       .Toastify__toast-container--bottom-right {
-        position: absolute;
-        bottom: 20px;
-        right: -100px;
+        position: fixed;
+        bottom: 2vh;
+        right: 1vw;
       }
 
       .invalidContract {

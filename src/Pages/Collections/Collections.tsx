@@ -189,7 +189,7 @@ const Collections: React.FC = () => {
                 {
                   isShowSearchBar ?
                    <div style={{width:"100%"}}>
-                    <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b" className="address_input"/> 
+                    <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b3cc84afef86d7" className="address_input"/> 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`getBtn ${addressInput.length > 5 ? "fetch":""}`}>
                   <span className="material-icons center icon">
                      rocket
@@ -285,7 +285,7 @@ const Collections: React.FC = () => {
             <label className='msg center'>Invalid Contract Address. Try Again</label><br/>
             <label className='msg center'>
           
-                   <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b" className="newAddressInput"/> 
+                   <input  value={addressInput} onChange={(e) => checkAddress(e.target.value)} onKeyPress={(e) => e.key === 'Enter'?getNewCollection(): null} type="input" placeholder="enter contract address... 0x320b3cc84afef" className="newAddressInput"/> 
 
                   <button onClick={() => getNewCollection()}  disabled={addressInput.length < 4 } className={`loadAgainBtn ${addressInput.length > 5 ? "fetch":""}`}>
                   <span className="material-icons center icon">
