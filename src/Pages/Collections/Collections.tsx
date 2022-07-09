@@ -1,4 +1,4 @@
-import React,{ useEffect, useState }  from 'react';
+import React,{ useEffect, useRef, useState }  from 'react';
 import "./Collections.scss";
 import { getContractMetadata, getNFtsByContract_Alchemy, presentToast } from '../../Services/AssetsService';
 import { useSelector,useDispatch } from 'react-redux';
@@ -6,9 +6,10 @@ import { getCollection} from '../../Store/actions';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { IContract } from '../../Models/interfaces';
+import AssetCard from '../../Components/Asset-Card/Asset-Card';
 
 const Collections: React.FC = () => {
- 
+
   /** Contract Metadata */
   const [contractData, setContractData] = useState<IContract>({name:"",symbol:"",tokenType:"",totalSupply: 0});
   const [isContractReady,setIsContractReady] = useState<boolean>(true);
@@ -159,6 +160,7 @@ const Collections: React.FC = () => {
    }
 
 
+
   /** View */
   return (
  
@@ -222,13 +224,7 @@ const Collections: React.FC = () => {
 
                         return  (
                         <li className={`list-inline-item center ${(index === collection.length - 1)?"last-item":""}`} key={asset.id.tokenId}>
-                          <div className="asset-card">
-                            {
-                              asset.metadata.image_url ?  <img src={asset.media[0].gateway} className="preview" alt='..'/> :   <img src={asset.media[0].gateway} className="preview" alt='..'/>
-                            }
-                          <label className='name'>{asset.metadata.name}</label>
-                          </div>
-              
+                          <AssetCard asset={asset}/>
                         </li>
                           )
                       })

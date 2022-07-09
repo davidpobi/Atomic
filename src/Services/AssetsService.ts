@@ -87,7 +87,7 @@ export const getNFtsByContract_Alchemy = async(chain: string, contractAddress: s
 
          const results: Array<any>  = nfts;
          results.map((x:any) => {
-            if(x.media[0].raw.length !== 0) {
+            if(x.media[0].raw.length !== 0 && x.error === undefined) {
              data.assets.push(x);
             }
             return 0;
