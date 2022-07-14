@@ -819,21 +819,24 @@ and (-webkit-min-device-pixel-ratio: 1.5) {
       }
 
 
-      .address_input  {
-        position: absolute;
-        top:12px;
-        right: 200px;
-        width: 200px;
-        height: 40px;
+      .address_input {
+        position: relative;
+        top:20px;
+        left: 40px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        width: 90%;
+        height: 50px;
         border-radius: 15px;
         border: 2px solid grey;
-        
+        padding: 0px;
       }
 
 
       .address_input::placeholder {
         position: relative;
         left: 25px;
+        font-size: 22px;
       }
 
       .getBtn {
@@ -1887,7 +1890,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
  
   .page-header {
     position: relative;
@@ -1900,6 +1903,10 @@ and (-webkit-min-device-pixel-ratio: 2) {
         top:5px;
         color: grey;
         margin-left: 50px;
+        width: 90%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
     
         .name {
           font-size: 37px;
@@ -1977,13 +1984,16 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 
       .address_input  {
-        position: absolute;
-        top:12px;
-        right: 220px;
-        width: 400px;
-        height: 40px;
+        position: relative;
+        top:20px;
+        left: 40px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+        width: 90%;
+        height: 50px;
         border-radius: 15px;
         border: 2px solid grey;
+        padding: 0px;
         
       }
 
@@ -2199,9 +2209,9 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
             .address_input  {
               position: absolute;
-              top:12px;
-              right: 220px;
-              width: 400px;
+              top:14px;
+              right: 200px;
+              width: 350px;
               height: 40px;
               border-radius: 15px;
               border: 2px solid grey;
