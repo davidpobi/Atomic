@@ -15,50 +15,12 @@ import { validateEthereumAddress } from "../../utils/helpers";
 import Toast from "../../components/Toast";
 import NoMatch from "../../components/NoMatch";
 
-const tempContractData: IContract = {
+const defaultContractData: IContract = {
   name: "",
   symbol: "",
   tokenType: "",
   totalSupply: 0,
 };
-const assets: Array<IAsset> = [
-  {
-    id: "1",
-    imgUrl: "https://arweave.net/74oKHasIXsor5bEC6jdv25TMn8rGZLWBFiCwUFBNYdM",
-    name: "Ride",
-  },
-  {
-    id: "2",
-    imgUrl: "https://arweave.net/OtYO-voyGNKzdgBblAP-C7M8YK1Bbe01upmXrF0X_3U",
-    name: "Now O'Clock ⏰",
-  },
-  {
-    id: "3",
-    imgUrl: "https://arweave.net/6UP14Y9wcpZ7uvp5N2dzArKw5aPr3E0zqJisW7VM1YY",
-    name: "Microcosm",
-  },
-  {
-    id: "4",
-    imgUrl:
-      "https://firebasestorage.googleapis.com/v0/b/kalabash-22f11.appspot.com/o/DSGNs%2FWings.PNG?alt=media&token=7d8cd6cf-94b1-43e1-85cb-1c95ef80ce6e",
-    name: "Wings",
-  },
-  {
-    id: "5",
-    imgUrl: "https://arweave.net/OtYO-voyGNKzdgBblAP-C7M8YK1Bbe01upmXrF0X_3U",
-    name: "Now O'Clock ⏰",
-  },
-  {
-    id: "6",
-    imgUrl: "https://arweave.net/6UP14Y9wcpZ7uvp5N2dzArKw5aPr3E0zqJisW7VM1YY",
-    name: "Microcosm",
-  },
-  {
-    id: "7",
-    imgUrl: "https://arweave.net/yRiKSLkWGt0mCueowzqbbTzRmct56ZO6ihyqbKuCUhc",
-    name: "Wright",
-  },
-];
 
 const Collections: NextPage = ({ data }: any) => {
   const [assetsList, setAssetsList] = useState<Array<IAsset | any>>([]);
@@ -198,7 +160,7 @@ const Collections: NextPage = ({ data }: any) => {
           <ContractToolbar
             searchReady={isSearchReady}
             runSearchCallback={getNewCollection}
-            contract={data.isValid ? data.metadata : tempContractData}
+            contract={data.isValid ? data.metadata : defaultContractData}
             toggleSearchBoxCallback={handleToggleSearchBox}
           />
 
@@ -224,7 +186,7 @@ const Collections: NextPage = ({ data }: any) => {
             columnSpacing={{
               sm: 3,
               md: 4,
-              xl: assets.length > 6 ? 7 : 5,
+              xl: assetsList.length > 6 ? 7 : 5,
             }}
             sx={{
               position: "relative",
@@ -242,7 +204,7 @@ const Collections: NextPage = ({ data }: any) => {
                 sx={{
                   backgroundColor: "white",
                   marginBottom: {
-                    xs: index === assets.length - 1 ? "50px" : "20px",
+                    xs: index === assetsList.length - 1 ? "50px" : "20px",
                     md: "0px",
                   },
                 }}
