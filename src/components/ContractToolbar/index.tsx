@@ -49,16 +49,6 @@ const buttonStyle = {
       md: "12px",
     },
   },
-  ":hover": {
-    color: "rgb(146, 145, 145)",
-    backgroundColor: "white",
-    border: "2px solid #ababab",
-  },
-  ":active": {
-    color: "rgb(146, 145, 145)",
-    backgroundColor: "white",
-    border: "2px solid #ababab",
-  },
 };
 
 interface ContractToolbarProps {
@@ -105,7 +95,20 @@ const ContractToolbar = ({
         <Button
           onClick={handleToggleSearchBox}
           variant="contained"
-          sx={{ ...buttonStyle, border: isSearchReady ? "3px solid teal" : "3px solid grey" }}
+          sx={{
+            ...buttonStyle,
+            border: isSearchReady ? "2px solid teal" : "2px solid grey",
+            ":hover": {
+              color: "rgb(146, 145, 145)",
+              backgroundColor: "white",
+              border: isSearchReady ? "2.5px solid teal" : "2px solid #ababab",
+            },
+            ":active": {
+              color: "rgb(146, 145, 145)",
+              backgroundColor: "white",
+              border: isSearchReady ? "2.5px solid teal" : "2px solid #ababab",
+            },
+          }}
         >
           {isSearchReady ? (
             <>

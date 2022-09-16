@@ -53,16 +53,6 @@ const style = {
       top: "5px",
       left: "-2px",
     },
-    ":hover": {
-      color: "rgb(146, 145, 145)",
-      backgroundColor: "white",
-      border: "3px solid #ababab",
-    },
-    ":active": {
-      color: "rgb(146, 145, 145)",
-      backgroundColor: "white",
-      border: "3px solid #ababab",
-    },
   },
 };
 
@@ -109,7 +99,19 @@ const NoMatch = ({ invalidContractCallback }: NoMatchProps) => {
           onClick={getNewCollection}
           variant="contained"
           className="getBtn"
-          sx={{ border: isSearchReady ? "3px solid teal" : "3px solid grey" }}
+          sx={{
+            border: isSearchReady ? "2px solid teal" : "2px solid grey",
+            ":hover": {
+              color: "rgb(146, 145, 145)",
+              backgroundColor: "white",
+              border: isSearchReady ? "2.5px solid teal" : "2px solid #ababab",
+            },
+            ":active": {
+              color: "rgb(146, 145, 145)",
+              backgroundColor: "white",
+              border: isSearchReady ? "2.5px solid teal" : "2px solid #ababab",
+            },
+          }}
         >
           <RocketIcon className="icon" />
           <span className="txt">Get Collection</span>
