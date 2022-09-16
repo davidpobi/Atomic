@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import ContractDetails from "../../components/ContractDetails";
 import LoopIcon from "@mui/icons-material/Loop";
+import RocketIcon from "@mui/icons-material/Rocket";
 import { IContract } from "../../interfaces/contracts";
 
 const toolbar = {
@@ -30,7 +31,6 @@ const buttonStyle = {
   right: "25px",
   backgroundColor: "white",
   color: "rgb(146, 145, 145)",
-  border: "2px solid grey",
   borderRadius: "15px",
   width: "192px",
   height: "45px",
@@ -63,11 +63,29 @@ const buttonStyle = {
 
 interface ContractToolbarProps {
   contract: IContract;
+  searchReady: boolean;
+  runSearchCallback: () => void;
   toggleSearchBoxCallback: () => void;
 }
 
-const ContractToolbar = ({ contract, toggleSearchBoxCallback }: ContractToolbarProps) => {
+const ContractToolbar = ({
+  contract,
+  searchReady,
+  runSearchCallback,
+  toggleSearchBoxCallback,
+}: ContractToolbarProps) => {
+  const [isSearchReady, setIsSearchReady] = useState(false);
+
+  useEffect(() => {
+    setIsSearchReady(searchReady);
+  }, [searchReady]);
+
   const handleToggleSearchBox = () => {
+    if (searchReady) {
+      console.log("run");
+      runSearchCallback();
+      return;
+    }
     toggleSearchBoxCallback();
   };
 
@@ -84,10 +102,22 @@ const ContractToolbar = ({ contract, toggleSearchBoxCallback }: ContractToolbarP
         }}
       >
         <ContractDetails contract={contract} />
-
-        <Button onClick={handleToggleSearchBox} variant="contained" sx={{ ...buttonStyle }}>
-          <LoopIcon className="icon" />
-          <span className="txt">New Collection</span>
+        <Button
+          onClick={handleToggleSearchBox}
+          variant="contained"
+          sx={{ ...buttonStyle, border: isSearchReady ? "3px solid teal" : "2px solid grey" }}
+        >
+          {isSearchReady ? (
+            <>
+              <RocketIcon className="icon" />
+              <span className="txt">Get Collection</span>
+            </>
+          ) : (
+            <>
+              <LoopIcon className="icon" />
+              <span className="txt">New Collection</span>
+            </>
+          )}
         </Button>
       </Box>
     </React.Fragment>

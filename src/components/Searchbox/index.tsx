@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Fab } from "@mui/material";
 import RocketIcon from "@mui/icons-material/Rocket";
+import { validateEthereumAddress } from "../../utils/helpers";
 
 const searchbox = {
   position: "relative",
@@ -35,10 +36,20 @@ const searchbox = {
     borderRadius: "15px",
     border: " 2px solid grey",
     backgroundColor: "transparent",
+    padding: "0px 0px 0px 25px",
+    color: "#808080",
+    fontSize: {
+      xs: "16px",
+      md: "19px",
+    },
   },
   ".addressInput::placeholder": {
     position: "relative",
-    left: "25px",
+    left: "0px",
+    fontSize: {
+      xs: "13px",
+      md: "16px",
+    },
   },
   ".fetchBtn": {
     position: "absolute",
@@ -75,13 +86,65 @@ const searchbox = {
   },
 };
 
-const SearchBox = () => {
+interface SearchBoxProps {
+  callSearch: boolean;
+  searchReadyCallback?: () => void;
+  cancelSearchReadyCallback?: () => void;
+  invalidContractCallback: () => void;
+}
+
+const SearchBox = ({
+  callSearch,
+  searchReadyCallback,
+  cancelSearchReadyCallback,
+  invalidContractCallback,
+}: SearchBoxProps) => {
+  const [addressInput, setAddressInput] = useState("");
+
+  useEffect(() => {
+    if (addressInput.length > 5) {
+      searchReadyCallback && searchReadyCallback();
+    } else {
+      cancelSearchReadyCallback && cancelSearchReadyCallback();
+    }
+  }, [addressInput, searchReadyCallback, cancelSearchReadyCallback]);
+
+  useEffect(() => {
+    if (callSearch) {
+      getNewCollection();
+    }
+  }, [callSearch]);
+
+  const checkAddress = (address: any) => {
+    setAddressInput(address.trim());
+  };
+
+  const getNewCollection = () => {
+    if (!validateEthereumAddress(addressInput || "")) {
+      invalidContractCallback();
+      setAddressInput("");
+      return;
+    }
+    window.open(window.location.origin + "/collection/" + addressInput, "_self");
+  };
+
   return (
     <React.Fragment>
       <Box sx={{ ...searchbox }}>
-        <input type="text" placeholder="enter contract address... 0x320b3cc84afef86d7" className="addressInput" />
+        <input
+          value={addressInput}
+          onChange={(e) => checkAddress(e.target.value)}
+          onKeyPress={(e) => (e.key === "Enter" ? getNewCollection() : null)}
+          type="text"
+          placeholder="enter contract address... 0x320b3cc84afef86d7"
+          className="addressInput"
+        />
 
-        <Fab className="fetchBtn">
+        <Fab
+          className={`fetchBtn ${addressInput.length > 5 ? "fetch" : ""}`}
+          onClick={() => getNewCollection()}
+          disabled={addressInput.length < 4}
+        >
           <RocketIcon className="icon" />
         </Fab>
       </Box>

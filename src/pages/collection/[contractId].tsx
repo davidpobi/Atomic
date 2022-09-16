@@ -1,17 +1,18 @@
 import type { NextPage } from "next";
 import PageBody from "../../components/PageBody";
 import HeadTag from "../../components/HeadTag";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import AssetCard from "../../components/AssetCard";
 import { IAsset } from "../../interfaces/assets";
 import { IContract, IContractDetailsResult } from "../../interfaces/contracts";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ContractToolbar from "../../components/ContractToolbar";
 import SearchBox from "../../components/Searchbox";
 import ActionButtons from "../../components/ActionButtons";
 import { getContractMetadata, getTokensByContract } from "../../services/contracts.service";
 import { useRouter } from "next/router";
 import { validateEthereumAddress } from "../../utils/helpers";
+import Toast from "../../components/Toast";
 
 const tempContractData: IContract = {
   name: "",
@@ -61,20 +62,58 @@ const assets: Array<IAsset> = [
 const Collections: NextPage = ({ data }: any) => {
   const [assetsList, setAssetsList] = useState<Array<IAsset | any>>([]);
   const [showToggleSearchBox, setShowToggleSearchBox] = useState(false);
+  const [isSearchReady, setIsSearchReady] = useState(false);
+  const [callSearch, setCallSearch] = useState(false);
   const [scrollToTop, setScrollToTop] = useState(false);
+  const [nextToken, setNextToken] = useState("");
+  const [currentTokenPos, setCurrentTokenPos] = useState(0);
+  const [pageTokens, setPageTokens] = useState([""]);
+  const [hasNextPage, setHasNextPage] = useState(true);
+  const [totalTokensCount, setTotalTokensCount] = useState(0);
   const router = useRouter();
   const { contractId } = router.query as any;
+  const anchorRef = useRef(null);
+  const [openToast, setOpenToast] = React.useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
   useEffect(() => {
-    // getTokensByContract("eth", contractId, data.nextToken || "").then((x) => {
-    //   console.log(x);
-    //   setAssetsList(x.assets);
-    // });
-
     if (data.isValid && data.assets.length > 0) {
       setAssetsList(data.assets);
+      setTotalTokensCount(data.assets.length);
+      if (data.nextToken === null) {
+        setHasNextPage(false);
+        return;
+      }
+      setNextToken(data.nextToken);
     }
   }, [contractId, data]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpenToast(false);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [openToast]);
+
+  const getNFTsByContract = async (contractAddress: string, pageToken: string, setNext: boolean) => {
+    const result = await getTokensByContract("eth", contractAddress, pageToken);
+    if (result.assets.length > 0) {
+      setAssetsList(result.assets);
+    }
+
+    if (!result.nextToken) {
+      setHasNextPage(false);
+      return;
+    }
+
+    if (setNext) {
+      setNextToken(result.nextToken);
+      setTotalTokensCount(totalTokensCount + result.assets.length);
+    }
+  };
 
   const handleToggleSearchBox = () => {
     setShowToggleSearchBox(!showToggleSearchBox);
@@ -82,17 +121,63 @@ const Collections: NextPage = ({ data }: any) => {
   };
 
   const handleNextPage = () => {
-    console.log("next");
+    if (!hasNextPage) {
+      presentToast("End of collection");
+      return;
+    }
+
+    getNFTsByContract(contractId, nextToken, true);
+    setPageTokens((oldArray) => [...oldArray, nextToken]);
+    setCurrentTokenPos(currentTokenPos + 1);
   };
 
   const handlePrevPage = () => {
-    console.log("previous");
+    const offset = pageTokens[currentTokenPos - 1];
+    setCurrentTokenPos(currentTokenPos - 1);
+    if (currentTokenPos === 0) {
+      presentToast("start of collection");
+      setCurrentTokenPos(0);
+      return;
+    }
+
+    setNextToken(pageTokens[pageTokens.length - 1]);
+    const set = pageTokens;
+    set.pop();
+    setPageTokens(set);
+
+    if (offset === undefined) {
+      getNFTsByContract(contractId, "", false);
+    } else {
+      getNFTsByContract(contractId, offset, false);
+    }
+    setTotalTokensCount(totalTokensCount - 5);
+  };
+
+  const invalidContractCallback = () => {
+    presentToast("Invalid Contract Address !!");
+  };
+
+  const searchReadyCallback = () => {
+    setIsSearchReady(true);
+  };
+
+  const cancelSearchReadyCallback = () => {
+    setIsSearchReady(false);
+  };
+
+  const getNewCollection = () => {
+    setCallSearch(true);
+  };
+
+  const presentToast = (message: string) => {
+    setToastMessage(message);
+    setOpenToast(true);
   };
 
   return (
     <React.Fragment>
       <HeadTag
-        title="Atomic"
+        title="GalleryX"
         content={
           data.isSeoReady
             ? "Explore the " + data.metadata.name + " collection"
@@ -108,11 +193,22 @@ const Collections: NextPage = ({ data }: any) => {
 
       <PageBody scrollPage={scrollToTop}>
         <ContractToolbar
+          searchReady={isSearchReady}
+          runSearchCallback={getNewCollection}
           contract={data.isValid ? data.metadata : tempContractData}
           toggleSearchBoxCallback={handleToggleSearchBox}
         />
 
-        {showToggleSearchBox ? <SearchBox /> : <></>}
+        {showToggleSearchBox ? (
+          <SearchBox
+            callSearch={callSearch}
+            invalidContractCallback={invalidContractCallback}
+            searchReadyCallback={searchReadyCallback}
+            cancelSearchReadyCallback={cancelSearchReadyCallback}
+          />
+        ) : (
+          <></>
+        )}
 
         <Grid
           container
@@ -154,11 +250,34 @@ const Collections: NextPage = ({ data }: any) => {
         </Grid>
 
         <ActionButtons
+          pager={{ totalTokensCount: totalTokensCount, totalSupply: data.metadata.totalSupply }}
           nextPageCallback={handleNextPage}
           previousPageCallback={handlePrevPage}
           toggleSearchBoxCallback={handleToggleSearchBox}
         />
       </PageBody>
+      <Box ref={anchorRef} component={"div"} sx={{ height: "30px" }}>
+        <Toast
+          openState={openToast}
+          message={toastMessage}
+          hasIcon={false}
+          anchorRef={anchorRef}
+          placement="auto"
+          positionTop={{
+            xs: "85vh",
+            sm: "82vh",
+            md: "85vh",
+            lg: "80vh",
+            xl: "80vh",
+          }}
+          positionLeft={{
+            xs: "-10px",
+            sm: "-10px",
+            md: "10px",
+            xl: "10px",
+          }}
+        />
+      </Box>
     </React.Fragment>
   );
 };

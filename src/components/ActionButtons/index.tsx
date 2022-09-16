@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
@@ -9,17 +9,28 @@ import LoopIcon from "@mui/icons-material/Loop";
 import FullcreenIcon from "@mui/icons-material/FullscreenOutlined";
 
 interface ActionButtonsProps {
+  pager: { totalTokensCount: number; totalSupply: number };
   nextPageCallback: () => void;
   previousPageCallback: () => void;
   toggleSearchBoxCallback: () => void;
   toggleFullscreenCallback?: () => void;
 }
 
-const ActionButtons = ({ nextPageCallback, previousPageCallback, toggleSearchBoxCallback }: ActionButtonsProps) => {
+const ActionButtons = ({
+  pager,
+  nextPageCallback,
+  previousPageCallback,
+  toggleSearchBoxCallback,
+}: ActionButtonsProps) => {
+  const [totalTokensCount, setTokensCount] = useState(pager.totalTokensCount);
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.down("xl"), {
     noSsr: true,
   });
+
+  useEffect(() => {
+    setTokensCount(pager.totalTokensCount);
+  }, [pager.totalTokensCount]);
 
   const handleToggleSearchBoxCallback = () => {
     toggleSearchBoxCallback();
@@ -39,9 +50,9 @@ const ActionButtons = ({ nextPageCallback, previousPageCallback, toggleSearchBox
         sx={{
           position: "fixed",
           bottom: {
-            xs: "5%",
-            sm: "15%",
-            md: "15%",
+            xs: "10vh",
+            sm: "15vh",
+            md: "15vh",
           },
           right: {
             xs: "5px",
@@ -87,8 +98,8 @@ const ActionButtons = ({ nextPageCallback, previousPageCallback, toggleSearchBox
             },
             ".pager": {
               fontSize: {
-                xs: "8px",
-                md: "12px",
+                xs: totalTokensCount > 9999 ? "6px" : "8px",
+                md: totalTokensCount > 9999 ? "10px" : "11px",
               },
               color: "#3b3b3b",
             },
@@ -117,9 +128,16 @@ const ActionButtons = ({ nextPageCallback, previousPageCallback, toggleSearchBox
         <Fab onClick={handlePrevPageCallback} className="actionBtn">
           <ArrowBwd className="icon" />
         </Fab>
-        <Fab className="actionBtn">
-          <span className="pager">2/100</span>
-        </Fab>
+        {pager.totalSupply !== undefined ? (
+          <Fab className="actionBtn">
+            <span className="pager">
+              {" "}
+              {totalTokensCount} / {pager.totalSupply}
+            </span>
+          </Fab>
+        ) : (
+          <></>
+        )}
       </Box>
     </React.Fragment>
   );
