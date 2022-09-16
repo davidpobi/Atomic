@@ -1,7 +1,7 @@
 An Open & Better Way To View & Share Collections On The Ethereum blockchain. 
 
 
-[Demo](https://atomic-x.vercel.app/collections/0x620b70123fb810f6c653da7644b5dd0b6312e4d8)
+[Demo](https://atomic-x.vercel.app/collection/0x620b70123fb810f6c653da7644b5dd0b6312e4d8)
 
 Responsive on desktop and mobile devices. Tablet screens coming soon.
 
