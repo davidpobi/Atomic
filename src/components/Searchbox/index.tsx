@@ -127,7 +127,7 @@ const SearchBox = ({
             },
             color: "#808080",
             fontSize: {
-              xs: "13px",
+              xs: "17px",
               md: "19px",
             },
           },
