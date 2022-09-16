@@ -251,7 +251,6 @@ const Collections: NextPage = ({ data }: any) => {
   );
 };
 
-// This gets called on every request
 export const getServerSideProps = async ({ params }: any) => {
   const contractId = params.contractId;
   let data: IContractDetailsResult = {
