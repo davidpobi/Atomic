@@ -64,7 +64,9 @@ const AssetCard = ({ assetData }: AssetCardProps) => {
     if (fallback) {
       setImgUrl(defaultThumbnail);
     } else {
-      setImgUrl(asset.metadata.image);
+      if (asset.metadata !== undefined) {
+        setImgUrl(asset.metadata.image);
+      }
       setFallback(true);
     }
   };
