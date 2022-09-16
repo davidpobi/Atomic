@@ -41,19 +41,25 @@ Replace 'XXX-XXX' with respective keys
 ```
 REACT_APP_MORALIS_SERVER_URL = "XXX-XXX"
 REACT_APP_MORALIS_API_KEY = "XXX-XXX"
-REACT_APP_ALCHEMY_API_KEY = "XXX-XXX"
+NEXT_PUBLIC_ALCHEMY_API_KEY = "XXX-XXX"
+ALCHEMY_API_KEY = "XXX-XXX"
 ```
 
 
 
-### `npm start`
+### `yarn install`
+
+Install app dependencies
+
+
+### `yarn run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:5700](http://localhost:5700) to view it in the browser.
 
 
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 
