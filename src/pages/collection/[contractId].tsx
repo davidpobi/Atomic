@@ -13,6 +13,7 @@ import { getContractMetadata, getTokensByContract } from "../../services/contrac
 import { useRouter } from "next/router";
 import { validateEthereumAddress } from "../../utils/helpers";
 import Toast from "../../components/Toast";
+import NoMatch from "../../components/NoMatch";
 
 const tempContractData: IContract = {
   name: "",
@@ -155,6 +156,7 @@ const Collections: NextPage = ({ data }: any) => {
 
   const invalidContractCallback = () => {
     presentToast("Invalid Contract Address !!");
+    setCallSearch(false);
   };
 
   const searchReadyCallback = () => {
@@ -166,7 +168,7 @@ const Collections: NextPage = ({ data }: any) => {
   };
 
   const getNewCollection = () => {
-    setCallSearch(true);
+    setCallSearch(!callSearch);
   };
 
   const presentToast = (message: string) => {
@@ -177,7 +179,7 @@ const Collections: NextPage = ({ data }: any) => {
   return (
     <React.Fragment>
       <HeadTag
-        title="Atomic"
+        title="GalleryX"
         content={
           data.isSeoReady
             ? "Explore the " + data.metadata.name + " collection"
@@ -191,71 +193,76 @@ const Collections: NextPage = ({ data }: any) => {
         faviconUrl="/favicon.png"
       />
 
-      <PageBody scrollPage={scrollToTop}>
-        <ContractToolbar
-          searchReady={isSearchReady}
-          runSearchCallback={getNewCollection}
-          contract={data.isValid ? data.metadata : tempContractData}
-          toggleSearchBoxCallback={handleToggleSearchBox}
-        />
-
-        {showToggleSearchBox ? (
-          <SearchBox
-            callSearch={callSearch}
-            invalidContractCallback={invalidContractCallback}
-            searchReadyCallback={searchReadyCallback}
-            cancelSearchReadyCallback={cancelSearchReadyCallback}
+      {data.isValid ? (
+        <PageBody scrollPage={scrollToTop}>
+          <ContractToolbar
+            searchReady={isSearchReady}
+            runSearchCallback={getNewCollection}
+            contract={data.isValid ? data.metadata : tempContractData}
+            toggleSearchBoxCallback={handleToggleSearchBox}
           />
-        ) : (
-          <></>
-        )}
 
-        <Grid
-          container
-          rowSpacing={{
-            xs: 3,
-            sm: 2,
-            md: 3,
-            xl: 4,
-          }}
-          columnSpacing={{
-            sm: 3,
-            md: 4,
-            xl: assets.length > 6 ? 7 : 5,
-          }}
-          sx={{
-            position: "relative",
-            top: "20px",
-          }}
-        >
-          {assetsList.map((asset, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              xl={4}
-              key={asset.id.tokenId}
-              sx={{
-                backgroundColor: "white",
-                marginBottom: {
-                  xs: index === assets.length - 1 ? "50px" : "20px",
-                  md: "0px",
-                },
-              }}
-            >
-              <AssetCard assetData={asset} />
-            </Grid>
-          ))}
-        </Grid>
+          {showToggleSearchBox ? (
+            <SearchBox
+              callSearch={callSearch}
+              invalidContractCallback={invalidContractCallback}
+              searchReadyCallback={searchReadyCallback}
+              cancelSearchReadyCallback={cancelSearchReadyCallback}
+            />
+          ) : (
+            <></>
+          )}
 
-        <ActionButtons
-          pager={{ totalTokensCount: totalTokensCount, totalSupply: data.metadata.totalSupply }}
-          nextPageCallback={handleNextPage}
-          previousPageCallback={handlePrevPage}
-          toggleSearchBoxCallback={handleToggleSearchBox}
-        />
-      </PageBody>
+          <Grid
+            container
+            rowSpacing={{
+              xs: 3,
+              sm: 2,
+              md: 3,
+              xl: 4,
+            }}
+            columnSpacing={{
+              sm: 3,
+              md: 4,
+              xl: assets.length > 6 ? 7 : 5,
+            }}
+            sx={{
+              position: "relative",
+              top: "20px",
+            }}
+          >
+            {assetsList.map((asset, index) => (
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                xl={4}
+                key={asset.id.tokenId}
+                sx={{
+                  backgroundColor: "white",
+                  marginBottom: {
+                    xs: index === assets.length - 1 ? "50px" : "20px",
+                    md: "0px",
+                  },
+                }}
+              >
+                <AssetCard assetData={asset} />
+              </Grid>
+            ))}
+          </Grid>
+
+          <ActionButtons
+            pager={{ totalTokensCount: totalTokensCount, totalSupply: data.metadata.totalSupply }}
+            nextPageCallback={handleNextPage}
+            previousPageCallback={handlePrevPage}
+            toggleSearchBoxCallback={handleToggleSearchBox}
+          />
+        </PageBody>
+      ) : (
+        <NoMatch invalidContractCallback={invalidContractCallback} />
+      )}
+
       <Box ref={anchorRef} component={"div"} sx={{ height: "30px" }}>
         <Toast
           openState={openToast}

@@ -82,7 +82,6 @@ const ContractToolbar = ({
 
   const handleToggleSearchBox = () => {
     if (searchReady) {
-      console.log("run");
       runSearchCallback();
       return;
     }
@@ -102,10 +101,11 @@ const ContractToolbar = ({
         }}
       >
         <ContractDetails contract={contract} />
+
         <Button
           onClick={handleToggleSearchBox}
           variant="contained"
-          sx={{ ...buttonStyle, border: isSearchReady ? "3px solid teal" : "2px solid grey" }}
+          sx={{ ...buttonStyle, border: isSearchReady ? "3px solid teal" : "3px solid grey" }}
         >
           {isSearchReady ? (
             <>
