@@ -179,7 +179,7 @@ const Collections: NextPage = ({ data }: any) => {
   return (
     <React.Fragment>
       <HeadTag
-        title="GalleryX"
+        title="Atomic"
         content={
           data.isSeoReady
             ? "Explore the " + data.metadata.name + " collection"
