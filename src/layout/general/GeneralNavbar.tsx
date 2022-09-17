@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
 import CustomAvatar from "../../components/Avatar";
-import EthLogo from "../../../public/images/eth-logo.svg";
+import EthLogo from "/public/images/eth-logo.svg";
 
 const textStyle = {
   fontFamily: "Kantumruy Pro",
@@ -81,7 +81,7 @@ const GeneralNavBar = () => {
           </Typography>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Eth logo">
+            <Tooltip title="">
               <IconButton
                 onClick={handleOpenUserMenu}
                 sx={{

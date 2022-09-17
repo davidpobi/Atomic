@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IAsset } from "../../interfaces/assets";
-import defaultThumbnail from "../../../public/images/default.png";
+import defaultThumbnail from "/public/images/default.png";
 
 const card = {
   display: "inline-block",
