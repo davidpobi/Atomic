@@ -52,30 +52,63 @@ interface AssetCardProps {
 }
 
 const AssetCard = ({ assetData }: AssetCardProps) => {
-  const [asset, setAsset] = useState<IAsset | any>({ name: assetData.metadata.name });
-  const [imgUrl, setImgUrl] = useState(assetData.media[0].gateway);
+  const [asset, setAsset] = useState<IAsset | any>({
+    name: assetData.metadata.name,
+    imgUrl: assetData.media[0].gateway,
+  });
   const [fallback, setFallback] = useState(false);
 
   useEffect(() => {
     setAsset({ name: assetData.metadata.name, imgUrl: assetData.media[0].gateway });
   }, [assetData]);
 
-  const reloadUrl = () => {
-    if (fallback) {
-      setImgUrl(defaultThumbnail);
-    } else {
-      if (asset.metadata !== undefined) {
-        setImgUrl(asset.metadata.image);
+  const sanitizeAndSetUrl = (assetUrl: string) => {
+    const image_url: any = assetUrl;
+    const hold = image_url.match("ipfs://");
+    if (hold === null) {
+      setAsset({ ...asset, imgUrl: assetData.media[0].gateway });
+      return;
+    }
+    if (hold[0] === "ipfs://") {
+      let image_location: string | null = null;
+      const txt_ = image_url.split("ipfs://")[1];
+      const isClean = txt_.match("ipfs/");
+      if (isClean !== null) {
+        image_location = txt_.split("ipfs/")[1];
+      } else {
+        image_location = txt_;
       }
-      setFallback(true);
+
+      const url = "https://ipfs.io/ipfs/" + image_location;
+      setAsset({ ...asset, imgUrl: url });
+    } else {
+      setAsset({ ...asset, imgUrl: assetData.media[0].raw });
     }
   };
+
+  const reloadUrl = () => {
+    try {
+      if (fallback) {
+        setAsset({ ...asset, imgUrl: defaultThumbnail });
+      } else {
+        if (assetData.metadata !== undefined) {
+          setAsset({ ...asset, imgUrl: assetData.metadata.image });
+        } else if (assetData.media) {
+          sanitizeAndSetUrl(assetData.media[0].raw);
+        }
+        setFallback(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <React.Fragment>
       <Box sx={{ ...card }}>
         <Image
-          src={imgUrl}
-          alt="me"
+          src={asset.imgUrl}
+          alt="token"
           width={"500"}
           height={"500"}
           layout="responsive"

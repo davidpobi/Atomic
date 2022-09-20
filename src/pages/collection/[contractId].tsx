@@ -22,7 +22,7 @@ const defaultContractData: IContract = {
   totalSupply: 0,
 };
 
-const Collections: NextPage = ({ data }: any) => {
+const Collection: NextPage = ({ data }: any) => {
   const [assetsList, setAssetsList] = useState<Array<IAsset | any>>([]);
   const [showToggleSearchBox, setShowToggleSearchBox] = useState(false);
   const [isSearchReady, setIsSearchReady] = useState(false);
@@ -298,4 +298,4 @@ export const getServerSideProps = async ({ params }: any) => {
   return { props: { data } };
 };
 
-export default Collections;
+export default Collection;
